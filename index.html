@@ -5,277 +5,269 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pythos - Studio & Developer Services</title>
   <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Header / Navigation -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <!-- Updated logo file: pythos-logo.png -->
-        <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section with Video Background -->
-  <section id="hero">
-    <!-- Updated background video file: background.mp4 -->
-    <video autoplay muted loop id="bgVideo">
-      <source src="assets/videos/background.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-      <h1>Welcome to Pythos</h1>
-      <p>Innovative Studio & Developer Solutions</p>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <!-- About Section -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pythos - Studio & Developer Services</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- Header / Navigation -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <!-- Updated logo file: pythos-logo.png -->
-        <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section with Video Background -->
-  <section id="hero">
-    <!-- Updated background video file: background.mp4 -->
-    <video autoplay muted loop id="bgVideo">
-      <source src="assets/videos/background.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-      <h1>Welcome to Pythos</h1>
-      <p>Innovative Studio & Developer Solutions</p>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <!-- About Section -->
-<style>
-  .about-section {
-    padding: 4rem 2rem;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .intro-text {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  .services-grid {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 3rem;
-  }
-
-  .service-item {
-    flex: 1;
-    padding: 1.5rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-  }
-
-  .service-item h3 {
-    margin-bottom: 1rem;
-    color: #2d3748;
-  }
-
-  .service-item p {
-    line-height: 1.6;
-    color: #4a5568;
-  }
-
-  .closing-statement {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 768px) {
-    .services-grid {
-      flex-direction: column;
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    /* Header / Navigation */
+    header {
+      background: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .header-container {
+      display: flex;
       align-items: center;
+      justify-content: space-between;
     }
-    .service-item {
+    .logo img {
+      height: 50px; /* Mobile size */
+      width: auto;
+    }
+    /* Increase logo size on desktop */
+    @media (min-width: 768px) {
+      .logo img {
+        height: 80px;
+      }
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      padding: 0.5rem 1rem;
+    }
+    /* Hero Section with Video Background */
+    #hero {
+      position: relative;
+      overflow: hidden;
+    }
+    #bgVideo {
       width: 100%;
-      margin: 1rem auto;
+      height: auto;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 100%;
+      z-index: -1;
     }
-  }
-
-  /* Add styling for the Services section */
-  #services .services-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  #services .service-item {
-    text-align: center;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    padding: 2rem;
-    flex: 1;
-    min-width: 250px;
-  }
-
-  @media (max-width: 768px) {
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: #fff;
+    }
+    /* About Section */
+    #about.about-section {
+      padding: 4rem 2rem;
+      background: #f0f0f0;
+    }
+    #about h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+    .services-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    /* Match the styling of the services boxes */
+    #about .service-item {
+      flex: 1;
+      min-width: 250px;
+      padding: 2rem;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #about .service-item h3 {
+      margin-bottom: 1rem;
+      color: #2d3748;
+    }
+    #about .service-item p {
+      color: #4a5568;
+    }
+    .closing-statement {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      text-align: center;
+    }
+    /* Services Section */
+    #services {
+      padding: 4rem 2rem;
+    }
+    #services h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .services-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
     #services .service-item {
-      width: 100%;
-      margin: 1rem auto;
+      text-align: center;
+      background-color: #f8f9fa;
+      border-radius: 8px;
+      padding: 2rem;
+      flex: 1;
+      min-width: 250px;
     }
-  }
-</style>
+    #services .service-item img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+    #services .service-item h3 {
+      margin-bottom: 1rem;
+      color: #2d3748;
+    }
+    #services .service-item p {
+      color: #4a5568;
+    }
+    /* Contact Section */
+    #contact {
+      padding: 4rem 2rem;
+      background: #f0f0f0;
+      text-align: center;
+    }
+    #contact h2 {
+      margin-bottom: 1rem;
+    }
+    #contact a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    /* Footer */
+    footer {
+      background: #222;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: row;
+      }
+      nav ul {
+        flex-direction: row;
+      }
+      .services-grid,
+      .services-list {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container header-container">
+      <div class="logo">
+        <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<section class="about-section">
-  <div class="container">
-    <h2>About Pythos</h2>
-    
-    <div class="intro-text">
-      <p>
-        At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
-      </p>
-      
-      <p>
-        From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
+  <!-- Hero Section with Video Background -->
+  <section id="hero">
+    <video autoplay muted loop playsinline id="bgVideo">
+      <source src="assets/videos/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-content">
+      <h1>Welcome to Pythos</h1>
+      <p>Innovative Studio & Developer Solutions</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2>About Pythos</h2>
+      <div class="intro-text">
+        <p>
+          At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
+        </p>
+        <p>
+          From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <h3>Intelligent Solutions</h3>
+          <p>
+            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most – building relationships and driving innovation. We specialize in turning your expertise into powerful, accessible tools that enhance rather than replace human connection.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3>Creative Technology</h3>
+          <p>
+            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message. We blend artistic vision with technical precision to create multimedia experiences that resonate with your audience and strengthen your brand.
+          </p>
+        </div>
+        <div class="service-item">
+          <h3>Our Promise</h3>
+          <p>
+            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success – we're here to turn your technological challenges into opportunities for growth.
+          </p>
+        </div>
+      </div>
+      <p class="closing-statement">
+        Whether you're looking to automate processes, create compelling content, or build custom applications, Pythos brings both the technical expertise and human understanding to make it happen. Let's create something extraordinary together.
       </p>
     </div>
+  </section>
 
-    <div class="services-grid">
-      <div class="service-item">
-        <h3>Intelligent Solutions</h3>
-        <p>
-          Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation. We specialize in turning your expertise into powerful, accessible tools that enhance rather than replace human connection.
-        </p>
-      </div>
-
-      <div class="service-item">
-        <h3>Creative Technology</h3>
-        <p>
-          Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message. We blend artistic vision with technical precision to create multimedia experiences that resonate with your audience and strengthen your brand.
-        </p>
-      </div>
-
-      <div class="service-item">
-        <h3>Our Promise</h3>
-        <p>
-          Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success - we're here to turn your technological challenges into opportunities for growth.
-        </p>
-      </div>
-    </div>
-
-    <p class="closing-statement">
-      Whether you're looking to automate processes, create compelling content, or build custom applications, Pythos brings both the technical expertise and human understanding to make it happen. Let's create something extraordinary together.
-    </p>
-  </div>
-</section>
-  
   <!-- Services Section -->
   <section id="services">
     <div class="container">
       <h2>Our Services</h2>
       <div class="services-list">
-        <!-- Full-Stack Development uses fullstack-icon.png -->
         <div class="service-item">
           <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" />
           <h3>Full-Stack Development</h3>
           <p>Custom web and software development using modern technologies.</p>
         </div>
-        <!-- Multimedia Production uses service2.png -->
         <div class="service-item">
           <img src="assets/images/service2.png" alt="Multimedia Production" />
           <h3>Multimedia Production</h3>
           <p>Creative design, video production, and motion graphics solutions.</p>
         </div>
-        <!-- AI-Integrated Solutions uses service3.png -->
-        <div class="service-item">
-          <img src="assets/images/service3.png" alt="AI-Integrated Solutions" />
-          <h3>AI-Integrated Solutions</h3>
-          <p>Innovative AI-powered applications to boost your business processes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Interested in our services? Reach out to us!</p>
-      <p>Email: <a href="mailto:contact@pythos.com">contact@pythos.com</a></p>
-      <p>Phone: (123) 456-7890</p>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Pythos. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <!-- JavaScript for smooth scrolling -->
-  <script src="script.js"></script>
-</body>
-</html>
-
-  
-  <!-- Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="services-list">
-        <!-- Full-Stack Development uses fullstack-icon.png -->
-        <div class="service-item">
-          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" />
-          <h3>Full-Stack Development</h3>
-          <p>Custom web and software development using modern technologies.</p>
-        </div>
-        <!-- Multimedia Production uses service2.png -->
-        <div class="service-item">
-          <img src="assets/images/service2.png" alt="Multimedia Production" />
-          <h3>Multimedia Production</h3>
-          <p>Creative design, video production, and motion graphics solutions.</p>
-        </div>
-        <!-- AI-Integrated Solutions uses service3.png -->
         <div class="service-item">
           <img src="assets/images/service3.png" alt="AI-Integrated Solutions" />
           <h3>AI-Integrated Solutions</h3>
