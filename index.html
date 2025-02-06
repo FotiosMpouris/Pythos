@@ -40,17 +40,73 @@
 
   <!-- About Section -->
   <!-- About Section -->
-<section id="about">
-  <section class="about-section">
+<style>
+  .about-section {
+    padding: 4rem 2rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .intro-text {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .services-grid {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .service-item {
+    flex: 1;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+  }
+
+  .service-item h3 {
+    margin-bottom: 1rem;
+    color: #2d3748;
+  }
+
+  .service-item p {
+    line-height: 1.6;
+    color: #4a5568;
+  }
+
+  .closing-statement {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<section class="about-section">
   <div class="container">
     <h2>About Pythos</h2>
-    <p>
-      At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
-    </p>
     
-    <p>
-      From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
-    </p>
+    <div class="intro-text">
+      <p>
+        At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
+      </p>
+      
+      <p>
+        From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
+      </p>
+    </div>
 
     <div class="services-grid">
       <div class="service-item">
@@ -80,7 +136,6 @@
     </p>
   </div>
 </section>
-
   <!-- Services Section -->
   <section id="services">
     <div class="container">
