@@ -15,7 +15,6 @@
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
-      /* Add scroll padding to account for fixed header */
       scroll-padding-top: 80px;
     }
 
@@ -25,9 +24,9 @@
       padding: 0 2rem;
     }
 
-    /* Header styles */
+    /* Header styles - Updated with dark transparent background */
     header {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: rgba(0, 0, 0, 0.8);
       position: fixed;
       width: 100%;
       top: 0;
@@ -52,9 +51,10 @@
       gap: 2rem;
     }
 
+    /* Updated navigation links to white */
     nav ul li a {
       text-decoration: none;
-      color: #333;
+      color: white;
       font-weight: 500;
     }
 
@@ -85,15 +85,15 @@
       padding-top: 40vh;
     }
 
-    /* Added: Text background for better readability */
     .hero-text-container {
       display: inline-block;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.5);
       border-radius: 10px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
     }
 
-    /* Services sections */
+    /* Rest of your styles remain the same */
     .about-section, #services {
       padding: 4rem 0;
     }
@@ -128,13 +128,11 @@
       color: #4a5568;
     }
 
-    /* Contact section */
     #contact {
       padding: 4rem 0;
       background-color: #f8f9fa;
     }
 
-    /* Footer */
     footer {
       padding: 2rem 0;
       background-color: #333;
@@ -142,7 +140,6 @@
       text-align: center;
     }
 
-    /* Media queries */
     @media (max-width: 768px) {
       .header-container {
         padding: 0 1rem;
@@ -163,7 +160,6 @@
         text-align: center;
       }
 
-      /* Center all text on mobile */
       .intro-text, 
       .closing-statement,
       #about p,
@@ -198,13 +194,14 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <div class="hero-text-container">
+      <div class="hero-text-container" id="hero-container">
         <h1 id="welcome-text">Welcome to Pythos</h1>
         <p id="subtext">Innovative Studio & Developer Solutions</p>
       </div>
     </div>
   </section>
 
+  <!-- Rest of your sections remain exactly the same -->
   <!-- About Section -->
   <section id="about" class="about-section">
     <div class="container">
@@ -290,12 +287,18 @@
     </div>
   </footer>
 
-  <!-- JavaScript for color change -->
+  <!-- Updated JavaScript for synchronized color change and background appearance -->
   <script>
     window.addEventListener('load', function() {
       setTimeout(function() {
+        // Change text color to gold
         document.getElementById('welcome-text').style.color = '#FFD700';
         document.getElementById('subtext').style.color = '#FFD700';
+        
+        // Show and style the background container
+        const container = document.getElementById('hero-container');
+        container.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        container.style.opacity = '1';
       }, 2000);
     });
   </script>
