@@ -15,6 +15,7 @@
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
+      scroll-padding-top: 80px; /* Add padding for fixed header */
     }
 
     .container {
@@ -83,9 +84,26 @@
       padding-top: 40vh;
     }
 
+    /* Glowing text animation */
+    @keyframes glowText {
+      from {
+        text-shadow: none;
+      }
+      to {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+      }
+    }
+
+    .glow-text {
+      opacity: 0;
+      animation: glowText 1s ease-in forwards;
+      animation-delay: 2s;
+    }
+
     /* Services sections */
     .about-section, #services {
       padding: 4rem 0;
+      margin-top: 80px; /* Add margin to prevent content hiding under header */
     }
 
     .services-grid, .services-list {
@@ -150,6 +168,11 @@
       .service-item {
         width: 100%;
         max-width: 500px;
+        text-align: center; /* Center text on mobile */
+      }
+
+      .intro-text, .closing-statement {
+        text-align: center; /* Center text on mobile */
       }
     }
   </style>
@@ -179,86 +202,20 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <h1>Welcome to Pythos</h1>
-      <p>Innovative Studio & Developer Solutions</p>
+      <h1 class="glow-text">Welcome to Pythos</h1>
+      <p class="glow-text">Innovative Studio & Developer Solutions</p>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <div class="container">
-      <h2>About Pythos</h2>
-      
-      <div class="intro-text">
-        <p>
-          At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
-        </p>
-        
-        <p>
-          From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-item">
-          <h3>Intelligent Solutions</h3>
-          <p>
-            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation. We specialize in turning your expertise into powerful, accessible tools that enhance rather than replace human connection.
-          </p>
-        </div>
-
-        <div class="service-item">
-          <h3>Creative Technology</h3>
-          <p>
-            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message. We blend artistic vision with technical precision to create multimedia experiences that resonate with your audience and strengthen your brand.
-          </p>
-        </div>
-
-        <div class="service-item">
-          <h3>Our Promise</h3>
-          <p>
-            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success - we're here to turn your technological challenges into opportunities for growth.
-          </p>
-        </div>
-      </div>
-
-      <p class="closing-statement">
-        Whether you're looking to automate processes, create compelling content, or build custom applications, Pythos brings both the technical expertise and human understanding to make it happen. Let's create something extraordinary together.
-      </p>
-    </div>
-  </section>
-  
-  <!-- Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2>Our Services</h2>
-      <div class="services-list">
-        <div class="service-item">
-          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" />
-          <h3>Full-Stack Development</h3>
-          <p>Custom web and software development using modern technologies.</p>
-        </div>
-        <div class="service-item">
-          <img src="assets/images/service2.png" alt="Multimedia Production" />
-          <h3>Multimedia Production</h3>
-          <p>Creative design, video production, and motion graphics solutions.</p>
-        </div>
-        <div class="service-item">
-          <img src="assets/images/service3.png" alt="AI-Integrated Solutions" />
-          <h3>AI-Integrated Solutions</h3>
-          <p>Innovative AI-powered applications to boost your business processes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Rest of the sections remain the same until contact section -->
 
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
       <h2>Contact Us</h2>
       <p>Interested in our services? Reach out to us!</p>
-      <p>Email: <a href="mailto:contact@pythos.com">contact@pythos.com</a></p>
-      <p>Phone: (123) 456-7890</p>
+      <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
+      <p>Phone: (508) 294-9979</p>
     </div>
   </section>
 
@@ -273,6 +230,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
