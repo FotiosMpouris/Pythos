@@ -15,7 +15,8 @@
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
-      scroll-padding-top: 80px; /* Add padding for fixed header */
+      /* Add scroll padding to account for fixed header */
+      scroll-padding-top: 80px;
     }
 
     .container {
@@ -84,26 +85,9 @@
       padding-top: 40vh;
     }
 
-    /* Glowing text animation */
-    @keyframes glowText {
-      from {
-        text-shadow: none;
-      }
-      to {
-        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
-      }
-    }
-
-    .glow-text {
-      opacity: 0;
-      animation: glowText 1s ease-in forwards;
-      animation-delay: 2s;
-    }
-
     /* Services sections */
     .about-section, #services {
       padding: 4rem 0;
-      margin-top: 80px; /* Add margin to prevent content hiding under header */
     }
 
     .services-grid, .services-list {
@@ -168,11 +152,15 @@
       .service-item {
         width: 100%;
         max-width: 500px;
-        text-align: center; /* Center text on mobile */
+        text-align: center;
       }
 
-      .intro-text, .closing-statement {
-        text-align: center; /* Center text on mobile */
+      /* Center all text on mobile */
+      .intro-text, 
+      .closing-statement,
+      #about p,
+      #services p {
+        text-align: center;
       }
     }
   </style>
@@ -202,8 +190,8 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <h1 class="glow-text">Welcome to Pythos</h1>
-      <p class="glow-text">Innovative Studio & Developer Solutions</p>
+      <h1 id="welcome-text">Welcome to Pythos</h1>
+      <p id="subtext">Innovative Studio & Developer Solutions</p>
     </div>
   </section>
 
@@ -226,7 +214,14 @@
     </div>
   </footer>
 
-  <!-- JavaScript for smooth scrolling -->
-  <script src="script.js"></script>
+  <!-- JavaScript for color change -->
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('welcome-text').style.color = '#FFD700';
+        document.getElementById('subtext').style.color = '#FFD700';
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
