@@ -93,8 +93,32 @@
       align-items: center;
     }
     .service-item {
-      width: 96%;
-      max-width: 500px;
+      width: 100%;
+      margin: 1rem auto;
+    }
+  }
+
+  /* Add styling for the Services section */
+  #services .services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  #services .service-item {
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 2rem;
+    flex: 1;
+    min-width: 250px;
+  }
+
+  @media (max-width: 768px) {
+    #services .service-item {
+      width: 100%;
+      margin: 1rem auto;
     }
   }
 </style>
