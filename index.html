@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Previous head section with all styles remains exactly the same until contact section -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pythos - Studio & Developer Services</title>
   <style>
-    /* Base styles */
+    /* All previous styles remain the same */
     * {
       margin: 0;
       padding: 0;
@@ -24,7 +25,6 @@
       padding: 0 2rem;
     }
 
-    /* Header styles - Updated with dark transparent background */
     header {
       background-color: rgba(0, 0, 0, 0.8);
       position: fixed;
@@ -51,14 +51,12 @@
       gap: 2rem;
     }
 
-    /* Updated navigation links to white */
     nav ul li a {
       text-decoration: none;
       color: white;
       font-weight: 500;
     }
 
-    /* Hero section */
     #hero {
       position: relative;
       height: 100vh;
@@ -93,7 +91,6 @@
       transition: opacity 0.5s ease;
     }
 
-    /* Rest of your styles remain the same */
     .about-section, #services {
       padding: 4rem 0;
     }
@@ -131,6 +128,24 @@
     #contact {
       padding: 4rem 0;
       background-color: #f8f9fa;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Added: Contact video styles */
+    .contact-video-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .contact-video {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     footer {
@@ -196,14 +211,14 @@
     <div class="hero-content">
       <div class="hero-text-container" id="hero-container">
         <h1 id="welcome-text">Welcome to Pythos</h1>
-        <p id="subtext">Innovative Studio & Developer Solutions</p>
+        <p id="subtext">Digital Innovation | Human Connection</p>
       </div>
     </div>
   </section>
 
-  <!-- Rest of your sections remain exactly the same -->
-  <!-- About Section -->
+  <!-- About Section remains exactly the same -->
   <section id="about" class="about-section">
+    <!-- All existing about section content remains unchanged -->
     <div class="container">
       <h2>About Pythos</h2>
       
@@ -246,7 +261,7 @@
     </div>
   </section>
   
-  <!-- Services Section -->
+  <!-- Services Section remains exactly the same -->
   <section id="services">
     <div class="container">
       <h2>Our Services</h2>
@@ -270,10 +285,16 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact Section with added video -->
   <section id="contact">
     <div class="container">
       <h2>Contact Us</h2>
+      <div class="contact-video-container">
+        <video class="contact-video" autoplay muted loop playsinline>
+          <source src="assets/videos/contact.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <p>Interested in our services? Reach out to us!</p>
       <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
       <p>Phone: (508) 294-9979</p>
@@ -287,15 +308,13 @@
     </div>
   </footer>
 
-  <!-- Updated JavaScript for synchronized color change and background appearance -->
+  <!-- JavaScript remains exactly the same -->
   <script>
     window.addEventListener('load', function() {
       setTimeout(function() {
-        // Change text color to gold
         document.getElementById('welcome-text').style.color = '#FFD700';
         document.getElementById('subtext').style.color = '#FFD700';
         
-        // Show and style the background container
         const container = document.getElementById('hero-container');
         container.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
         container.style.opacity = '1';
