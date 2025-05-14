@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pythos - Digital Innovation & Creative Solutions</title>
+    <title>Pythos - Digital Innovation | Studio & Developer Services</title>
     <style>
         /* Global Reset & Base Styles */
-        *, *::before, *::after {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -14,78 +14,105 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 70px; /* Adjust based on fixed header height */
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
-            color: #333; 
-            background-color: #F7FAFC; 
-            font-size: 16px;
+            color: #4A5568; /* Dark Gray for body text - Professional */
+            background-color: #F7FAFC; /* Very Light Gray Background */
         }
 
         .container {
             width: 90%;
             max-width: 1100px;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 15px;
-            padding-right: 15px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* --- UPDATED HEADER --- */
+        h1, h2, h3 {
+            color: #1A202C; /* Very Dark Blue/Charcoal for Headings */
+            margin-bottom: 0.75em;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.8em; font-weight: 700;}
+        h2 { font-size: 2.2em; font-weight: 600;}
+        h3 { font-size: 1.5em; font-weight: 600;}
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: #3182CE; /* Primary Accent Blue */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Header & Navigation */
         header {
-            background-color: rgba(26, 32, 44, 0.95); /* Slightly more opaque */
-            padding: 10px 0; /* Reduced padding to make header slimmer */
+            background-color: rgba(26, 32, 44, 0.9); /* Dark, slightly transparent */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .header-container {
             display: flex;
-            /* justify-content: space-between; */ /* Will make logo left if tagline is beside it */
-            justify-content: center; /* Center the logo-and-tagline block */
+            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap; /* Allow tagline to wrap on small screens */
-        }
-        
-        .logo-block { /* Wrapper for logo and its new tagline */
-            display: flex;
-            align-items: center;
-            /* flex-direction: column; /* Stack logo and tagline if desired */
-            /* text-align: center; */
         }
 
-        header .logo img {
-            height: 50px; /* Slightly smaller logo for slimmer header */
+        .logo img {
+            height: 45px; /* Adjusted logo size */
             width: auto;
-            display: block; 
-            margin-right: 15px; /* Space between logo and tagline */
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #E2E8F0; /* Light Gray for nav links */
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active { /* For potential active state styling */
+            color: #63B3ED; /* Brighter blue on hover/active */
         }
         
-        .header-tagline {
-            font-size: 0.9em;
-            color: #A0AEC0; /* Light gray for tagline */
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            /* margin-top: 5px; /* If logo is above tagline */
+        /* Mobile Navigation (Basic - can be enhanced with JS for a toggle) */
+        .mobile-nav-toggle {
+            display: none; /* Hidden on desktop */
+            color: #fff;
+            font-size: 1.8em;
+            cursor: pointer;
         }
-        /* --- END HEADER UPDATES --- */
 
 
         /* Hero Section */
         #hero {
             position: relative;
-            height: 100vh; 
+            height: 100vh;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: white;
         }
 
         #bgVideo {
@@ -97,161 +124,165 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: -2; 
+            z-index: -2; /* Behind overlay and content */
             object-fit: cover;
         }
-
-        #hero::before { 
+        
+        #hero::after { /* Dark overlay for text readability */
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(10, 20, 30, 0.7); /* Slightly increased overlay opacity */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 25, 47, 0.6); /* Darker overlay */
             z-index: -1;
         }
 
+
         .hero-content {
-            position: relative; 
+            position: relative; /* Ensure it's above the pseudo-element overlay */
             z-index: 1;
+            color: #fff;
             max-width: 800px;
         }
 
-        .hero-text-container {
+        .hero-text-container { /* For the animated background appearance */
             display: inline-block;
             padding: 30px 40px;
             border-radius: 12px;
-            background-color: rgba(26, 32, 44, 0.65); /* Slightly more opaque text bg */
-            opacity: 0; 
-            transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s; 
-            transform: translateY(20px); 
+            opacity: 0;
+            background-color: rgba(26, 32, 44, 0.0); /* Initially transparent */
+            transition: opacity 0.8s ease-out 0.5s, background-color 0.8s ease-out 0.5s; /* Delayed fade-in */
         }
-        .hero-text-container.visible { 
+         .hero-text-container.loaded { /* Class added by JS */
             opacity: 1;
-            transform: translateY(0);
+            background-color: rgba(26, 32, 44, 0.65); /* Semi-transparent dark bg for text box */
         }
 
 
         .hero-content h1 {
-            font-size: 3.2em; 
+            font-size: 3em;
             margin-bottom: 0.5em;
+            color: #fff;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #FFFFFF; 
         }
 
         .hero-content p {
-            font-size: 1.4em; 
+            font-size: 1.3em;
+            color: #CBD5E0; /* Lighter gray for hero subtext */
             font-weight: 300;
-            color: #E2E8F0; 
         }
 
         /* General Section Styling */
         .section {
-            padding: 80px 0; 
+            padding: 80px 0;
         }
-        .section:nth-child(even) { 
-            background-color: #FFFFFF; 
+        .section:nth-of-type(even) { /* Alternating light backgrounds */
+            background-color: #fff;
         }
-        /* First section after hero will be 'about' which is odd */
-        #about.section { background-color: #EDF2F7; }
-        /* Services section is even, so it will be white */
-        /* Contact section (odd) has its own dark bg */
-
-
-        .section-title {
+         .section-header {
             text-align: center;
-            font-size: 2.5em;
-            color: #1A202C; 
-            margin-bottom: 20px;
-            font-weight: 600;
+            margin-bottom: 50px;
         }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #4A5568; 
-            max-width: 700px;
-            margin: 0 auto 60px auto; 
+        .section-header h2 {
+            margin-bottom: 0.5em;
         }
-        
-        #about .intro-text p, #about .closing-statement {
+        .section-header .subtitle {
             font-size: 1.1em;
-            color: #4A5568;
-            max-width: 800px;
-            margin: 0 auto 1.5em auto;
-            text-align: left; 
-        }
-        #about .intro-text p:last-child, #about .closing-statement {
-            margin-bottom: 0;
-        }
-         #about .closing-statement {
-            margin-top: 40px;
-            font-weight: 500;
-            text-align: center;
+            color: #718096; /* Medium Gray for subtitles */
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .content-grid {
+
+        /* About Section */
+        #about .about-content {
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center; 
-            margin-top: 40px;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* Center align intro text */
+        }
+        #about .intro-text {
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        #about .intro-text p {
+            font-size: 1.1em;
+            color: #2D3748; /* Slightly darker for emphasis */
         }
 
-        .content-item {
-            background-color: #FFFFFF;
+
+        /* Services Grid (Used in About and Services sections) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
             text-align: center;
-            flex: 1 1 calc(33.333% - 30px); 
-            min-width: 280px; 
-            max-width: 350px; 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .content-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(49,130,206,0.15); /* Blue shadow on hover */
+        }
+        .service-card img.service-icon { /* For specific icons in services */
+            width: 60px; /* Smaller icons */
+            height: 60px;
+            margin-bottom: 1.2em;
+            object-fit: contain; /* Ensure icons aren't distorted */
+        }
+        .service-card h3 {
+            font-size: 1.3em; /* Adjusted size */
+            margin-bottom: 0.8em;
         }
 
-        .content-item img.service-icon { 
-            width: 70px; 
-            height: 70px;
-            margin-bottom: 20px;
-            object-fit: contain; 
+        #about .closing-statement {
+            margin-top: 40px;
+            font-size: 1.1em;
+            font-style: italic;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
         }
+        
 
-        .content-item h3 {
-            font-size: 1.6em; 
-            color: #3182CE; 
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .content-item p {
-            color: #4A5568; 
-            font-size: 1em;
-        }
-
-        /* --- UPDATED CONTACT SECTION --- */
+        /* Contact Section */
         #contact {
-            background-color: #1A202C; 
-            color: #E2E8F0; 
+            background-color: #1A202C; /* Dark background for contact */
+            color: #E2E8F0; /* Light text */
         }
-        #contact .section-title {
-            color: #FFFFFF; 
+        #contact h2, #contact p {
+            color: #fff; /* White text for headings and paragraphs in contact */
         }
-        #contact .section-subtitle {
-            color: #A0AEC0; 
+        #contact a {
+            color: #63B3ED; /* Brighter blue for links on dark background */
+            font-weight: 500;
+        }
+         #contact .contact-details {
+            margin-top: 30px;
+        }
+        #contact .contact-details p {
+            font-size: 1.1em;
+            margin-bottom: 0.8em;
         }
 
         .contact-video-container {
             position: relative;
             width: 100%;
-            max-width: 700px; 
-            margin: 40px auto;
-            border-radius: 12px; 
+            max-width: 700px; /* Slightly smaller for better proportion */
+            margin: 30px auto;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .contact-video {
@@ -260,34 +291,12 @@
             display: block;
         }
 
-        #contact .contact-details { /* Wrapper for better control */
-            margin-top: 30px;
-        }
-        #contact .contact-details p {
-            font-size: 1.2em; /* Slightly larger */
-            margin-bottom: 12px;
-            color: #FFFFFF; /* Make prompt text white for better visibility */
-        }
-        #contact .contact-details .contact-method { /* Class for email/phone lines */
-             font-size: 1.15em;
-             color: #CBD5E0; /* Lighter than prompt, but visible */
-        }
-        #contact .contact-details a {
-            color: #63B3ED; 
-            text-decoration: none;
-            font-weight: 500;
-        }
-        #contact .contact-details a:hover {
-            text-decoration: underline;
-            color: #90CDF4; 
-        }
-        /* --- END CONTACT SECTION UPDATES --- */
 
-
+        /* Footer */
         footer {
             padding: 30px 0;
-            background-color: #0A121F; 
-            color: #A0AEC0; 
+            background-color: #0A121E; /* Even darker for footer */
+            color: #A0AEC0; /* Lighter gray for footer text */
             text-align: center;
             font-size: 0.9em;
         }
@@ -295,51 +304,58 @@
 
 
         /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            .content-item {
-                flex-basis: calc(50% - 30px); 
-            }
-        }
-
         @media (max-width: 768px) {
-            body { font-size: 15px; }
-            .hero-content h1 { font-size: 2.5em; }
-            .hero-content p { font-size: 1.2em; }
-            .section-title { font-size: 2em; }
-            .section-subtitle { font-size: 1.1em; }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.3em; }
             
             .header-container {
-                 justify-content: center; /* Center logo block on mobile */
+                padding: 0 1rem; /* Add padding for mobile header */
             }
-            .logo-block {
-                flex-direction: column; /* Stack logo and tagline */
-                align-items: center;
+            nav ul {
+                /* Basic mobile nav: Hide for now, can implement toggle later */
+                display: none; 
+                /* 
+                flex-direction: column;
+                position: absolute;
+                top: 65px; 
+                left: 0;
+                width: 100%;
+                background-color: rgba(26, 32, 44, 0.95);
+                padding: 10px 0;
+                gap: 0;
+                */
             }
-            header .logo img {
-                margin-right: 0;
-                margin-bottom: 5px; /* Space between logo and tagline when stacked */
+            nav ul li {
+                /* margin: 0; text-align: center; padding: 10px 0; */
+            }
+            .mobile-nav-toggle {
+                 display: block; /* Show hamburger icon */
             }
 
+            .hero-content h1 {
+                font-size: 2.4em;
+            }
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            .hero-text-container {
+                padding: 20px;
+            }
 
-            .content-grid {
-                gap: 20px;
+            .section {
+                padding: 60px 0;
             }
-            .content-item {
-                flex-basis: 100%; 
-                max-width: 450px; 
-                 margin-left: auto;
-                 margin-right: auto;
+            .section-header {
+                margin-bottom: 30px;
             }
-            #about .intro-text p { text-align: justify; } 
-            #contact .contact-details p { font-size: 1.1em; } /* Adjust contact text for mobile */
-            #contact .contact-details .contact-method { font-size: 1.05em; }
-        }
-         @media (max-width: 480px) {
-            .hero-content h1 { font-size: 2em; }
-            .hero-content p { font-size: 1.1em; }
-            .hero-text-container { padding: 20px; }
-            header .logo img { height: 45px; }
-            .header-tagline { font-size: 0.8em; }
+            
+            .services-grid {
+                 grid-template-columns: 1fr; /* Stack cards on mobile */
+            }
+            .service-card {
+                margin-bottom: 20px;
+            }
         }
 
     </style>
@@ -347,10 +363,19 @@
 <body>
   <header>
     <div class="container header-container">
-      <div class="logo-block"> <!-- Changed to logo-block -->
+      <div class="logo">
         <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
-        <span class="header-tagline">Digital Innovation & Creative Solutions</span>
       </div>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Basic Mobile Nav Toggle Placeholder - Needs JS to function -->
+      <div class="mobile-nav-toggle">☰</div> 
     </div>
   </header>
 
@@ -360,73 +385,75 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <div class="hero-text-container" id="hero-text-anim-container"> 
-        <h1 id="hero-main-title">Welcome to Pythos</h1> 
-        <p id="hero-subtext">Digital Innovation | Human Connection</p> 
+      <div class="hero-text-container" id="hero-text-box"> <!-- Changed ID for clarity -->
+        <h1>Welcome to Pythos</h1>
+        <p>Digital Innovation | Human Connection</p>
       </div>
     </div>
   </section>
 
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About Pythos</h2>
-      <p class="section-subtitle">Transforming Ideas into Digital Realities, Human-First.</p>
+      <div class="section-header">
+        <h2>About Pythos</h2>
+        <p class="subtitle">Transforming ideas into digital realities while keeping humanity at the heart of technology.</p>
+      </div>
       
       <div class="intro-text">
         <p>
-          At Pythos, we craft digital experiences and intelligent solutions that empower organizations and elevate human potential. Our mission is to bridge the gap between complex technology and practical, impactful results, ensuring every innovation serves a clear purpose and enhances human capability.
-        </p>
-        <p>
-          We believe technology should be an enabler, creating space for creativity, efficiency, and meaningful connections. From AI-powered applications that streamline your operations to captivating multimedia content that tells your unique story, we build with precision, passion, and a deep understanding of your goals.
+          At Pythos, our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
+          From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
         </p>
       </div>
 
-      <div class="content-grid">
-        <div class="content-item">
+      <div class="services-grid">
+        <div class="service-card">
           <h3>Intelligent Solutions</h3>
           <p>
-            Custom AI applications, automated workflows, and smart systems designed to free your team to focus on strategic growth and innovation. We specialize in translating your domain expertise into powerful, accessible tools.
+            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation.
           </p>
         </div>
-        <div class="content-item">
+        <div class="service-card">
           <h3>Creative Technology</h3>
           <p>
-            Dynamic training videos, engaging social media content, and compelling motion graphics that capture attention and convey your message with clarity and impact. We blend artistic vision with technical mastery.
+            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message with artistic vision and technical precision.
           </p>
         </div>
-        <div class="content-item">
+        <div class="service-card">
           <h3>Our Promise</h3>
           <p>
-            Every project begins with deep listening and collaboration. We are committed to transparent communication, agile development, and delivering solutions that not only meet but exceed your expectations. Your vision is our blueprint.
+            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success.
           </p>
         </div>
       </div>
 
       <p class="closing-statement">
-        Whether you're looking to innovate with AI, automate critical processes, or create unforgettable digital content, Pythos provides the expertise and partnership to bring your vision to life. Let's build the future, together.
+        Whether you're looking to automate, create, or build custom, Pythos brings the expertise and human understanding to make it happen. Let's create something extraordinary.
       </p>
     </div>
   </section>
   
   <section id="services" class="section">
     <div class="container">
-      <h2 class="section-title">Core Services</h2>
-      <p class="section-subtitle">Expertise to Power Your Digital Transformation.</p>
-      <div class="content-grid"> 
-        <div class="content-item">
-          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" class="service-icon" />
+      <div class="section-header">
+        <h2>Our Core Services</h2>
+        <p class="subtitle">Delivering cutting-edge solutions tailored to your unique business needs.</p>
+      </div>
+      <div class="services-grid"> <!-- Re-using services-grid for consistent card layout -->
+        <div class="service-card">
+          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development Icon" class="service-icon" />
           <h3>Full-Stack Development</h3>
-          <p>Bespoke web applications and robust software solutions, engineered with cutting-edge technologies for scalability and performance.</p>
+          <p>Custom web applications and robust software solutions using modern, scalable technologies from front-end to back-end.</p>
         </div>
-        <div class="content-item">
-          <img src="assets/images/service2.png" alt="Multimedia Production" class="service-icon" />
+        <div class="service-card">
+          <img src="assets/images/service2.png" alt="Multimedia Production Icon" class="service-icon" />
           <h3>Multimedia Production</h3>
-          <p>From concept to final cut – creative design, high-impact video production, and sophisticated motion graphics that tell your story.</p>
+          <p>Engaging video production, professional motion graphics, and creative design to bring your brand's story to life.</p>
         </div>
-        <div class="content-item">
-          <img src="assets/images/service3.png" alt="AI-Integrated Solutions" class="service-icon" />
+        <div class="service-card">
+          <img src="assets/images/service3.png" alt="AI Solutions Icon" class="service-icon" />
           <h3>AI-Integrated Solutions</h3>
-          <p>Leveraging artificial intelligence to build innovative applications, automate processes, and unlock new efficiencies for your business.</p>
+          <p>Innovative AI-powered applications, intelligent automation, and data-driven insights to boost your business processes.</p>
         </div>
       </div>
     </div>
@@ -434,62 +461,68 @@
 
   <section id="contact" class="section">
     <div class="container">
-      <h2 class="section-title">Connect With Us</h2>
-      <p class="section-subtitle">Let's discuss how Pythos can help elevate your next project.</p>
-      
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p class="subtitle">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
+      </div>
       <div class="contact-video-container">
-        <video class="contact-video" autoplay muted loop playsinline poster="assets/images/contact-video-poster.jpg"> 
+        <video class="contact-video" autoplay muted loop playsinline>
           <source src="assets/videos/contact.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      
       <div class="contact-details">
-        <p>Ready to start a conversation?</p> <!-- This will be white now -->
-        <p class="contact-method">Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
-        <p class="contact-method">Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
+        <p>We'd love to hear from you!</p>
+        <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
+        <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
       </div>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>© 2025 Pythos. Digital Innovation Crafted with Purpose.</p>
+      <p>© 2025 Pythos. Digital Innovation. Human Connection. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
     // Hero Text Animation
     window.addEventListener('load', function() {
-      const heroTextContainer = document.getElementById('hero-text-anim-container');
-      if (heroTextContainer) {
-        setTimeout(function() {
-          heroTextContainer.classList.add('visible');
-        }, 500); 
-      }
+      setTimeout(function() {
+        // Target the container to change its background and fade in
+        const heroTextContainer = document.getElementById('hero-text-box');
+        if (heroTextContainer) {
+            heroTextContainer.classList.add('loaded');
+        }
+        // Note: Text color changes for h1 and p are removed, rely on hero-content CSS
+      }, 1000); // Shortened delay for faster reveal
     });
 
-    // Smooth scroll (generic for any # links)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Calculate offset for fixed header
-                    const headerOffset = document.querySelector('header').offsetHeight || 70; // Fallback offset
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
+    // Smooth Scrolling for Navigation Links
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll("header nav ul li a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
         });
+      });
+
+      // Basic Mobile Nav Toggle (Optional - can be expanded)
+      // const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      // const nav = document.querySelector('header nav ul');
+      // if (mobileNavToggle && nav) {
+      //   mobileNavToggle.addEventListener('click', () => {
+      //     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'; 
+      //     // This is a very basic toggle. A class-based toggle is better.
+      //   });
+      // }
     });
   </script>
 </body>
 </html>
+
