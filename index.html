@@ -1,191 +1,366 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Previous head section with all styles remains exactly the same until contact section -->
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pythos - Studio & Developer Services</title>
-  <style>
-    /* All previous styles remain the same */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythos - Digital Innovation | Studio & Developer Services</title>
+    <style>
+        /* Global Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      scroll-padding-top: 80px;
-    }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 70px; /* Adjust based on fixed header height */
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #4A5568; /* Dark Gray for body text - Professional */
+            background-color: #F7FAFC; /* Very Light Gray Background */
+        }
 
-    header {
-      background-color: rgba(0, 0, 0, 0.8);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      padding: 1rem 0;
-    }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .header-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+        h1, h2, h3 {
+            color: #1A202C; /* Very Dark Blue/Charcoal for Headings */
+            margin-bottom: 0.75em;
+            line-height: 1.3;
+        }
 
-    .logo img {
-      height: 50px;
-      width: auto;
-    }
+        h1 { font-size: 2.8em; font-weight: 700;}
+        h2 { font-size: 2.2em; font-weight: 600;}
+        h3 { font-size: 1.5em; font-weight: 600;}
 
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2rem;
-    }
+        p {
+            margin-bottom: 1em;
+        }
 
-    nav ul li a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-    }
+        a {
+            color: #3182CE; /* Primary Accent Blue */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
 
-    #hero {
-      position: relative;
-      height: 100vh;
-      overflow: hidden;
-    }
+        /* Header & Navigation */
+        header {
+            background-color: rgba(26, 32, 44, 0.9); /* Dark, slightly transparent */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    #bgVideo {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -1;
-      object-fit: cover;
-    }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hero-content {
-      position: relative;
-      text-align: center;
-      color: white;
-      padding-top: 40vh;
-    }
+        .logo img {
+            height: 45px; /* Adjusted logo size */
+            width: auto;
+            display: block;
+        }
 
-    .hero-text-container {
-      display: inline-block;
-      padding: 20px;
-      border-radius: 10px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
 
-    .about-section, #services {
-      padding: 4rem 0;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: #E2E8F0; /* Light Gray for nav links */
+            font-weight: 500;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+        }
 
-    .services-grid, .services-list {
-      display: flex;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
+        nav ul li a:hover,
+        nav ul li a.active { /* For potential active state styling */
+            color: #63B3ED; /* Brighter blue on hover/active */
+        }
+        
+        /* Mobile Navigation (Basic - can be enhanced with JS for a toggle) */
+        .mobile-nav-toggle {
+            display: none; /* Hidden on desktop */
+            color: #fff;
+            font-size: 1.8em;
+            cursor: pointer;
+        }
 
-    .service-item {
-      flex: 1;
-      padding: 2rem;
-      background-color: #f8f9fa;
-      border-radius: 8px;
-      text-align: center;
-    }
 
-    .service-item img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1rem;
-    }
+        /* Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
 
-    .service-item h3 {
-      margin-bottom: 1rem;
-      color: #2d3748;
-      font-size: 1.5rem;
-    }
+        #bgVideo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2; /* Behind overlay and content */
+            object-fit: cover;
+        }
+        
+        #hero::after { /* Dark overlay for text readability */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 25, 47, 0.6); /* Darker overlay */
+            z-index: -1;
+        }
 
-    .service-item p {
-      color: #4a5568;
-    }
 
-    #contact {
-      padding: 4rem 0;
-      background-color: #f8f9fa;
-      position: relative;
-      overflow: hidden;
-    }
+        .hero-content {
+            position: relative; /* Ensure it's above the pseudo-element overlay */
+            z-index: 1;
+            color: #fff;
+            max-width: 800px;
+        }
 
-    /* Added: Contact video styles */
-    .contact-video-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 2rem auto;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+        .hero-text-container { /* For the animated background appearance */
+            display: inline-block;
+            padding: 30px 40px;
+            border-radius: 12px;
+            opacity: 0;
+            background-color: rgba(26, 32, 44, 0.0); /* Initially transparent */
+            transition: opacity 0.8s ease-out 0.5s, background-color 0.8s ease-out 0.5s; /* Delayed fade-in */
+        }
+         .hero-text-container.loaded { /* Class added by JS */
+            opacity: 1;
+            background-color: rgba(26, 32, 44, 0.65); /* Semi-transparent dark bg for text box */
+        }
 
-    .contact-video {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
 
-    footer {
-      padding: 2rem 0;
-      background-color: #333;
-      color: white;
-      text-align: center;
-    }
+        .hero-content h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-    @media (max-width: 768px) {
-      .header-container {
-        padding: 0 1rem;
-      }
-      
-      nav ul {
-        gap: 1rem;
-      }
+        .hero-content p {
+            font-size: 1.3em;
+            color: #CBD5E0; /* Lighter gray for hero subtext */
+            font-weight: 300;
+        }
 
-      .services-grid, .services-list {
-        flex-direction: column;
-        align-items: center;
-      }
+        /* General Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+        .section:nth-of-type(even) { /* Alternating light backgrounds */
+            background-color: #fff;
+        }
+         .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            margin-bottom: 0.5em;
+        }
+        .section-header .subtitle {
+            font-size: 1.1em;
+            color: #718096; /* Medium Gray for subtitles */
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-      .service-item {
-        width: 100%;
-        max-width: 500px;
-        text-align: center;
-      }
 
-      .intro-text, 
-      .closing-statement,
-      #about p,
-      #services p {
-        text-align: center;
-      }
-    }
-  </style>
+        /* About Section */
+        #about .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* Center align intro text */
+        }
+        #about .intro-text {
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        #about .intro-text p {
+            font-size: 1.1em;
+            color: #2D3748; /* Slightly darker for emphasis */
+        }
+
+
+        /* Services Grid (Used in About and Services sections) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(49,130,206,0.15); /* Blue shadow on hover */
+        }
+        .service-card img.service-icon { /* For specific icons in services */
+            width: 60px; /* Smaller icons */
+            height: 60px;
+            margin-bottom: 1.2em;
+            object-fit: contain; /* Ensure icons aren't distorted */
+        }
+        .service-card h3 {
+            font-size: 1.3em; /* Adjusted size */
+            margin-bottom: 0.8em;
+        }
+
+        #about .closing-statement {
+            margin-top: 40px;
+            font-size: 1.1em;
+            font-style: italic;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+        /* Contact Section */
+        #contact {
+            background-color: #1A202C; /* Dark background for contact */
+            color: #E2E8F0; /* Light text */
+        }
+        #contact h2, #contact p {
+            color: #fff; /* White text for headings and paragraphs in contact */
+        }
+        #contact a {
+            color: #63B3ED; /* Brighter blue for links on dark background */
+            font-weight: 500;
+        }
+         #contact .contact-details {
+            margin-top: 30px;
+        }
+        #contact .contact-details p {
+            font-size: 1.1em;
+            margin-bottom: 0.8em;
+        }
+
+        .contact-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Slightly smaller for better proportion */
+            margin: 30px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            background-color: #0A121E; /* Even darker for footer */
+            color: #A0AEC0; /* Lighter gray for footer text */
+            text-align: center;
+            font-size: 0.9em;
+        }
+        footer p { margin: 0; }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.3em; }
+            
+            .header-container {
+                padding: 0 1rem; /* Add padding for mobile header */
+            }
+            nav ul {
+                /* Basic mobile nav: Hide for now, can implement toggle later */
+                display: none; 
+                /* 
+                flex-direction: column;
+                position: absolute;
+                top: 65px; 
+                left: 0;
+                width: 100%;
+                background-color: rgba(26, 32, 44, 0.95);
+                padding: 10px 0;
+                gap: 0;
+                */
+            }
+            nav ul li {
+                /* margin: 0; text-align: center; padding: 10px 0; */
+            }
+            .mobile-nav-toggle {
+                 display: block; /* Show hamburger icon */
+            }
+
+            .hero-content h1 {
+                font-size: 2.4em;
+            }
+            .hero-content p {
+                font-size: 1.1em;
+            }
+            .hero-text-container {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+            .section-header {
+                margin-bottom: 30px;
+            }
+            
+            .services-grid {
+                 grid-template-columns: 1fr; /* Stack cards on mobile */
+            }
+            .service-card {
+                margin-bottom: 20px;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
   <header>
     <div class="container header-container">
       <div class="logo">
@@ -199,126 +374,153 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <!-- Basic Mobile Nav Toggle Placeholder - Needs JS to function -->
+      <div class="mobile-nav-toggle">☰</div> 
     </div>
   </header>
 
-  <!-- Hero Section with Video Background -->
   <section id="hero">
     <video autoplay muted loop playsinline id="bgVideo">
       <source src="assets/videos/background.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <div class="hero-text-container" id="hero-container">
-        <h1 id="welcome-text">Welcome to Pythos</h1>
-        <p id="subtext">Digital Innovation | Human Connection</p>
+      <div class="hero-text-container" id="hero-text-box"> <!-- Changed ID for clarity -->
+        <h1>Welcome to Pythos</h1>
+        <p>Digital Innovation | Human Connection</p>
       </div>
     </div>
   </section>
 
-  <!-- About Section remains exactly the same -->
-  <section id="about" class="about-section">
-    <!-- All existing about section content remains unchanged -->
+  <section id="about" class="section">
     <div class="container">
-      <h2>About Pythos</h2>
+      <div class="section-header">
+        <h2>About Pythos</h2>
+        <p class="subtitle">Transforming ideas into digital realities while keeping humanity at the heart of technology.</p>
+      </div>
       
       <div class="intro-text">
         <p>
-          At Pythos, we transform ideas into digital realities while keeping humanity at the heart of technology. Our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
-        </p>
-        
-        <p>
+          At Pythos, our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
           From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
         </p>
       </div>
 
       <div class="services-grid">
-        <div class="service-item">
+        <div class="service-card">
           <h3>Intelligent Solutions</h3>
           <p>
-            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation. We specialize in turning your expertise into powerful, accessible tools that enhance rather than replace human connection.
+            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation.
           </p>
         </div>
-
-        <div class="service-item">
+        <div class="service-card">
           <h3>Creative Technology</h3>
           <p>
-            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message. We blend artistic vision with technical precision to create multimedia experiences that resonate with your audience and strengthen your brand.
+            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message with artistic vision and technical precision.
           </p>
         </div>
-
-        <div class="service-item">
+        <div class="service-card">
           <h3>Our Promise</h3>
           <p>
-            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success - we're here to turn your technological challenges into opportunities for growth.
+            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success.
           </p>
         </div>
       </div>
 
       <p class="closing-statement">
-        Whether you're looking to automate processes, create compelling content, or build custom applications, Pythos brings both the technical expertise and human understanding to make it happen. Let's create something extraordinary together.
+        Whether you're looking to automate, create, or build custom, Pythos brings the expertise and human understanding to make it happen. Let's create something extraordinary.
       </p>
     </div>
   </section>
   
-  <!-- Services Section remains exactly the same -->
-  <section id="services">
+  <section id="services" class="section">
     <div class="container">
-      <h2>Our Services</h2>
-      <div class="services-list">
-        <div class="service-item">
-          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" />
+      <div class="section-header">
+        <h2>Our Core Services</h2>
+        <p class="subtitle">Delivering cutting-edge solutions tailored to your unique business needs.</p>
+      </div>
+      <div class="services-grid"> <!-- Re-using services-grid for consistent card layout -->
+        <div class="service-card">
+          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development Icon" class="service-icon" />
           <h3>Full-Stack Development</h3>
-          <p>Custom web and software development using modern technologies.</p>
+          <p>Custom web applications and robust software solutions using modern, scalable technologies from front-end to back-end.</p>
         </div>
-        <div class="service-item">
-          <img src="assets/images/service2.png" alt="Multimedia Production" />
+        <div class="service-card">
+          <img src="assets/images/service2.png" alt="Multimedia Production Icon" class="service-icon" />
           <h3>Multimedia Production</h3>
-          <p>Creative design, video production, and motion graphics solutions.</p>
+          <p>Engaging video production, professional motion graphics, and creative design to bring your brand's story to life.</p>
         </div>
-        <div class="service-item">
-          <img src="assets/images/service3.png" alt="AI-Integrated Solutions" />
+        <div class="service-card">
+          <img src="assets/images/service3.png" alt="AI Solutions Icon" class="service-icon" />
           <h3>AI-Integrated Solutions</h3>
-          <p>Innovative AI-powered applications to boost your business processes.</p>
+          <p>Innovative AI-powered applications, intelligent automation, and data-driven insights to boost your business processes.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section with added video -->
-  <section id="contact">
+  <section id="contact" class="section">
     <div class="container">
-      <h2>Contact Us</h2>
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p class="subtitle">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
+      </div>
       <div class="contact-video-container">
         <video class="contact-video" autoplay muted loop playsinline>
           <source src="assets/videos/contact.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
-      <p>Interested in our services? Reach out to us!</p>
-      <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
-      <p>Phone: (508) 294-9979</p>
+      <div class="contact-details">
+        <p>We'd love to hear from you!</p>
+        <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
+        <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>&copy; 2025 Pythos. All rights reserved.</p>
+      <p>© 2025 Pythos. Digital Innovation. Human Connection. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JavaScript remains exactly the same -->
   <script>
+    // Hero Text Animation
     window.addEventListener('load', function() {
       setTimeout(function() {
-        document.getElementById('welcome-text').style.color = '#FFD700';
-        document.getElementById('subtext').style.color = '#FFD700';
-        
-        const container = document.getElementById('hero-container');
-        container.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
-        container.style.opacity = '1';
-      }, 2000);
+        // Target the container to change its background and fade in
+        const heroTextContainer = document.getElementById('hero-text-box');
+        if (heroTextContainer) {
+            heroTextContainer.classList.add('loaded');
+        }
+        // Note: Text color changes for h1 and p are removed, rely on hero-content CSS
+      }, 1000); // Shortened delay for faster reveal
+    });
+
+    // Smooth Scrolling for Navigation Links
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll("header nav ul li a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Basic Mobile Nav Toggle (Optional - can be expanded)
+      // const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+      // const nav = document.querySelector('header nav ul');
+      // if (mobileNavToggle && nav) {
+      //   mobileNavToggle.addEventListener('click', () => {
+      //     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'; 
+      //     // This is a very basic toggle. A class-based toggle is better.
+      //   });
+      // }
     });
   </script>
 </body>
