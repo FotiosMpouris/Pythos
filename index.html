@@ -6,63 +6,49 @@
     <title>Pythos - Digital Innovation | Studio & Developer Services</title>
     <style>
         /* Global Reset & Base Styles */
-        * {
+        body, html {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px; /* Adjust based on fixed header height */
-        }
-
-        body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
-            color: #4A5568; /* Dark Gray for body text - Professional */
+            color: #4A5568; /* Dark Gray for body text */
             background-color: #F7FAFC; /* Very Light Gray Background */
+            scroll-behavior: smooth;
         }
 
         .container {
             width: 90%;
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px; 
         }
 
-        h1, h2, h3 {
-            color: #1A202C; /* Very Dark Blue/Charcoal for Headings */
-            margin-bottom: 0.75em;
-            line-height: 1.3;
+        /* --- PYTHOS COLOR PALETTE --- */
+        :root {
+            --pythos-teal: #1D7874; /* Primary Accent - Dark Teal */
+            --pythos-orange: #F39C12; /* Secondary Accent - Rich Gold/Orange */
+            --pythos-dark-charcoal: #2c3e50; /* Dark Base for sections/text */
+            --pythos-darker-charcoal: #1A202C; /* Slightly darker for headings */
+            --pythos-light-gray-bg: #e9f0ee; /* Light accent background */
+            --pythos-white: #ffffff;
+            --pythos-light-text: #bdc3c7; /* For text on dark backgrounds */
+            --pythos-dark-text: #4A5568; /* Main body text */
         }
 
-        h1 { font-size: 2.8em; font-weight: 700;}
-        h2 { font-size: 2.2em; font-weight: 600;}
-        h3 { font-size: 1.5em; font-weight: 600;}
 
-        p {
-            margin-bottom: 1em;
-        }
-
-        a {
-            color: #3182CE; /* Primary Accent Blue */
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Header & Navigation */
+        /* --- HEADER & NAVIGATION --- */
         header {
-            background-color: rgba(26, 32, 44, 0.9); /* Dark, slightly transparent */
-            position: fixed;
+            background-color: rgba(26, 32, 44, 0.95); /* Dark, slightly transparent - from your original */
+            position: fixed; /* Fixed navigation */
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 12px 0;
+            padding: 10px 0; /* Reduced padding slightly */
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: background-color 0.3s ease;
         }
+        /* Optional: Scrolled state for header */
+        /* header.scrolled { background-color: rgba(26, 32, 44, 1); } */
 
         .header-container {
             display: flex;
@@ -70,16 +56,15 @@
             align-items: center;
         }
 
-        .logo img {
-            height: 45px; /* Adjusted logo size */
-            width: auto;
+        header .logo img {
+            max-height: 45px; /* As per your original Pythos logo size */
             display: block;
         }
-
+        
         nav ul {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 28px; /* Increased gap slightly */
         }
 
         nav ul li a {
@@ -88,441 +73,406 @@
             font-weight: 500;
             font-size: 0.95em;
             transition: color 0.3s ease;
+            padding-bottom: 5px; /* Space for potential border */
+            border-bottom: 2px solid transparent; /* Transparent border for hover effect */
         }
 
         nav ul li a:hover,
-        nav ul li a.active { /* For potential active state styling */
-            color: #63B3ED; /* Brighter blue on hover/active */
+        nav ul li a.active { 
+            color: var(--pythos-orange); /* Orange accent on hover/active */
+            border-bottom-color: var(--pythos-orange);
         }
         
-        /* Mobile Navigation (Basic - can be enhanced with JS for a toggle) */
         .mobile-nav-toggle {
-            display: none; /* Hidden on desktop */
-            color: #fff;
+            display: none; 
+            color: var(--pythos-white);
             font-size: 1.8em;
             cursor: pointer;
         }
-
-
-        /* Hero Section */
-        #hero {
-            position: relative;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        #bgVideo {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -2; /* Behind overlay and content */
-            object-fit: cover;
-        }
+        /* --- END HEADER --- */
         
-        #hero::after { /* Dark overlay for text readability */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(10, 25, 47, 0.6); /* Darker overlay */
-            z-index: -1;
+        /* --- HERO SECTION (NO VIDEO BACKGROUND) --- */
+        .hero {
+            background-color: var(--pythos-dark-charcoal); /* Solid dark background */
+            color: var(--pythos-white);
+            padding: 180px 20px 120px 20px; /* Adjusted padding, more top for fixed header */
+            text-align: center;
+            min-height: 70vh; /* Can be adjusted */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative; 
         }
 
-
-        .hero-content {
-            position: relative; /* Ensure it's above the pseudo-element overlay */
-            z-index: 1;
-            color: #fff;
-            max-width: 800px;
-        }
-
-        .hero-text-container { /* For the animated background appearance */
-            display: inline-block;
-            padding: 30px 40px;
-            border-radius: 12px;
-            opacity: 0;
-            background-color: rgba(26, 32, 44, 0.0); /* Initially transparent */
-            transition: opacity 0.8s ease-out 0.5s, background-color 0.8s ease-out 0.5s; /* Delayed fade-in */
-        }
-         .hero-text-container.loaded { /* Class added by JS */
-            opacity: 1;
-            background-color: rgba(26, 32, 44, 0.65); /* Semi-transparent dark bg for text box */
-        }
-
-
-        .hero-content h1 {
-            font-size: 3em;
+        .hero h1 {
+            font-size: 3em; /* From your original Pythos */
             margin-bottom: 0.5em;
-            color: #fff;
+            color: var(--pythos-white);
             font-weight: 700;
             letter-spacing: 1px;
         }
+        .hero h1 .accent-text { /* For Pythos name or key phrases */
+            color: var(--pythos-orange); /* Orange accent in headline */
+        }
 
-        .hero-content p {
-            font-size: 1.3em;
-            color: #CBD5E0; /* Lighter gray for hero subtext */
+        .hero .tagline { /* Replaces .pitch from Hard-E for Pythos style */
+            font-size: 1.4em; /* Slightly larger */
+            margin-bottom: 35px;
+            color: var(--pythos-light-text);
             font-weight: 300;
-        }
-
-        /* General Section Styling */
-        .section {
-            padding: 80px 0;
-        }
-        .section:nth-of-type(even) { /* Alternating light backgrounds */
-            background-color: #fff;
-        }
-         .section-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        .section-header h2 {
-            margin-bottom: 0.5em;
-        }
-        .section-header .subtitle {
-            font-size: 1.1em;
-            color: #718096; /* Medium Gray for subtitles */
             max-width: 700px;
-            margin: 0 auto;
+        }
+        
+        .hero .cta-button { /* General CTA button style we can reuse */
+            display: inline-block;
+            background-color: var(--pythos-teal); /* Pythos Teal */
+            color: var(--pythos-white) !important; 
+            padding: 15px 35px; 
+            text-decoration: none;
+            border-radius: 8px; 
+            font-size: 1.1em; 
+            font-weight: bold;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .hero .cta-button:hover {
+            background-color: #16605d; /* Darker Teal */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        /* --- END HERO --- */
+
+
+        /* --- GENERAL SECTION STYLING --- */
+        .section {
+            padding: 80px 0px; /* Consistent padding from your original */
+            text-align: center;
+        }
+        /* Alternating backgrounds */
+        .section.light-bg { background-color: var(--pythos-white); }
+        .section.lighter-gray-bg { background-color: #F7FAFC; } /* Your original very light gray */
+        .section.accent-bg { /* For sections needing more pop */
+            background-color: var(--pythos-teal); 
+            color: var(--pythos-white);
+        }
+        .section.accent-bg .section-title,
+        .section.accent-bg .section-subtitle,
+        .section.accent-bg h3,
+        .section.accent-bg p {
+            color: var(--pythos-white);
+        }
+         .section.accent-bg .section-subtitle { color: var(--pythos-light-text); }
+
+
+        .section-title {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            color: var(--pythos-darker-charcoal); 
+        }
+        .section-subtitle {
+            font-size: 1.15em; /* Slightly larger */
+            color: #718096; /* Medium Gray from your original */
+            margin-bottom: 50px;
+            max-width: 750px; /* Wider subtitle */
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 15px;
+        }
+        /* --- END GENERAL SECTION --- */
+
+        /* --- CARD/GRID STYLING (FOR ABOUT & SERVICES) --- */
+        .content-grid { /* Renamed from features-grid */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; 
+            gap: 30px; 
+            padding: 0 10px; 
         }
 
-
-        /* About Section */
-        #about .about-content {
+        .card-item { /* Renamed from feature-item */
+            background-color: var(--pythos-white); 
+            padding: 30px; 
+            border-radius: 10px; /* Your original radius */
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07); /* Your original shadow */
+            text-align: center; /* Center content in cards */
+            flex-basis: calc(33.333% - 30px); 
+            min-width: 280px; 
+            max-width: 340px; /* Slightly wider max */
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center; /* Center align intro text */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+        .card-item:hover {
+            transform: translateY(-8px); /* Your original hover transform */
+            box-shadow: 0 10px 30px rgba(29,120,116,0.15); /* Teal shadow on hover */
+        }
+        .card-item img.card-icon { 
+            width: 60px; 
+            height: 60px;
+            margin-bottom: 1.2em;
+            object-fit: contain; 
+        }
+        .card-item h3 {
+            font-size: 1.4em; /* Slightly larger */
+            color: var(--pythos-darker-charcoal);
+            margin-bottom: 0.8em;
+        }
+        .card-item p { 
+            font-size: 0.95em;
+            color: var(--pythos-dark-text);
+            line-height: 1.7;
+        }
+        /* --- END CARD/GRID --- */
+
+        /* --- ABOUT SECTION SPECIFIC --- */
         #about .intro-text {
             max-width: 800px;
-            margin-bottom: 40px;
+            margin: 0 auto 40px auto;
+            text-align: center;
         }
         #about .intro-text p {
             font-size: 1.1em;
-            color: #2D3748; /* Slightly darker for emphasis */
+            color: #2D3748; 
         }
-
-
-        /* Services Grid (Used in About and Services sections) */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .service-card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(49,130,206,0.15); /* Blue shadow on hover */
-        }
-        .service-card img.service-icon { /* For specific icons in services */
-            width: 60px; /* Smaller icons */
-            height: 60px;
-            margin-bottom: 1.2em;
-            object-fit: contain; /* Ensure icons aren't distorted */
-        }
-        .service-card h3 {
-            font-size: 1.3em; /* Adjusted size */
-            margin-bottom: 0.8em;
-        }
-
         #about .closing-statement {
-            margin-top: 40px;
-            font-size: 1.1em;
+            margin-top: 50px; /* More space */
+            font-size: 1.15em; /* Slightly larger */
             font-style: italic;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
+            color: var(--pythos-darker-charcoal);
         }
+        /* --- END ABOUT --- */
         
-
-        /* Contact Section */
-        #contact {
-            background-color: #1A202C; /* Dark background for contact */
-            color: #E2E8F0; /* Light text */
-        }
-        #contact h2, #contact p {
-            color: #fff; /* White text for headings and paragraphs in contact */
-        }
-        #contact a {
-            color: #63B3ED; /* Brighter blue for links on dark background */
-            font-weight: 500;
+        /* --- CONTACT SECTION --- */
+        #contact { /* Re-using .accent-bg for dark background */
+            padding-bottom: 40px; /* Less bottom padding if footer follows */
         }
          #contact .contact-details {
-            margin-top: 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
         }
         #contact .contact-details p {
-            font-size: 1.1em;
-            margin-bottom: 0.8em;
+            font-size: 1.15em;
+            margin-bottom: 1em;
         }
-
-        .contact-video-container {
-            position: relative;
-            width: 100%;
-            max-width: 700px; /* Slightly smaller for better proportion */
-            margin: 30px auto;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        #contact .contact-details a {
+            color: var(--pythos-orange); /* Orange links on dark background */
+            font-weight: 500;
+            border-bottom: 1px dotted var(--pythos-orange);
+            transition: color 0.3s, border-bottom-color 0.3s;
         }
-
-        .contact-video {
-            width: 100%;
-            height: auto;
-            display: block;
+        #contact .contact-details a:hover {
+            color: var(--pythos-white);
+            border-bottom-color: var(--pythos-white);
+            text-decoration: none;
         }
+        /* --- END CONTACT --- */
 
-
-        /* Footer */
+        /* --- FOOTER --- */
         footer {
-            padding: 30px 0;
-            background-color: #0A121E; /* Even darker for footer */
-            color: #A0AEC0; /* Lighter gray for footer text */
+            background-color: #0A121E; 
+            color: #A0AEC0; 
             text-align: center;
+            padding: 40px 20px; /* More padding */
             font-size: 0.9em;
         }
         footer p { margin: 0; }
+        /* --- END FOOTER --- */
 
 
-        /* Responsive Adjustments */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 768px) {
-            h1 { font-size: 2.2em; }
-            h2 { font-size: 1.8em; }
-            h3 { font-size: 1.3em; }
-            
-            .header-container {
-                padding: 0 1rem; /* Add padding for mobile header */
-            }
-            nav ul {
-                /* Basic mobile nav: Hide for now, can implement toggle later */
-                display: none; 
-                /* 
-                flex-direction: column;
-                position: absolute;
-                top: 65px; 
-                left: 0;
-                width: 100%;
-                background-color: rgba(26, 32, 44, 0.95);
-                padding: 10px 0;
-                gap: 0;
-                */
-            }
-            nav ul li {
-                /* margin: 0; text-align: center; padding: 10px 0; */
-            }
-            .mobile-nav-toggle {
-                 display: block; /* Show hamburger icon */
-            }
+            .hero { padding: 120px 20px 80px 20px; min-height: 60vh; }
+            .hero h1 { font-size: 2.2em; }
+            .hero .tagline { font-size: 1.2em; }
 
-            .hero-content h1 {
-                font-size: 2.4em;
-            }
-            .hero-content p {
-                font-size: 1.1em;
-            }
-            .hero-text-container {
-                padding: 20px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-            .section-header {
-                margin-bottom: 30px;
-            }
+            .section-title { font-size: 1.9em; }
+            .section-subtitle { font-size: 1.05em; margin-bottom: 40px; }
             
-            .services-grid {
-                 grid-template-columns: 1fr; /* Stack cards on mobile */
-            }
-            .service-card {
-                margin-bottom: 20px;
+            .header-container { padding: 0 20px; }
+            nav ul { display: none; } /* Simplest mobile: hide nav. Full toggle needs JS */
+            .mobile-nav-toggle { display: block; }
+
+            .content-grid { grid-template-columns: 1fr; } /* Stack cards */
+            .card-item { 
+                flex-basis: calc(100% - 20px);
+                max-width: 400px; /* Max width for single column cards */
+                margin-left: auto;
+                margin-right: auto;
             }
         }
-
     </style>
 </head>
 <body>
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
-      </div>
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <!-- Basic Mobile Nav Toggle Placeholder - Needs JS to function -->
-      <div class="mobile-nav-toggle">☰</div> 
-    </div>
-  </header>
 
-  <section id="hero">
-    <video autoplay muted loop playsinline id="bgVideo">
-      <source src="assets/videos/background.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-content">
-      <div class="hero-text-container" id="hero-text-box"> <!-- Changed ID for clarity -->
-        <h1>Welcome to Pythos</h1>
-        <p>Digital Innovation | Human Connection</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>About Pythos</h2>
-        <p class="subtitle">Transforming ideas into digital realities while keeping humanity at the heart of technology.</p>
-      </div>
-      
-      <div class="intro-text">
-        <p>
-          At Pythos, our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
-          From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
-        </p>
-      </div>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Intelligent Solutions</h3>
-          <p>
-            Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation.
-          </p>
+    <header>
+        <div class="container header-container">
+          <div class="logo">
+            <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
+          </div>
+          <nav>
+            <ul>
+              <li><a href="#hero" class="active">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+          <div class="mobile-nav-toggle">☰</div> 
         </div>
-        <div class="service-card">
-          <h3>Creative Technology</h3>
-          <p>
-            Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message with artistic vision and technical precision.
-          </p>
-        </div>
-        <div class="service-card">
-          <h3>Our Promise</h3>
-          <p>
-            Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success.
-          </p>
-        </div>
-      </div>
+    </header>
 
-      <p class="closing-statement">
-        Whether you're looking to automate, create, or build custom, Pythos brings the expertise and human understanding to make it happen. Let's create something extraordinary.
-      </p>
-    </div>
-  </section>
+    <section id="hero" class="hero">
+        <div class="container">
+            <h1>Welcome to <span class="accent-text">Pythos</span></h1>
+            <p class="tagline">Digital Innovation | Human Connection</p>
+            <a href="#contact" class="cta-button">Let's Build Together</a>
+        </div>
+    </section>
+
+    <section id="about" class="section lighter-gray-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About <span style="color:var(--pythos-teal);">Pythos</span></h2>
+                <p class="section-subtitle">Transforming ideas into digital realities while keeping humanity at the heart of technology.</p>
+            </div>
+            
+            <div class="intro-text">
+                <p>
+                  At Pythos, our mission is simple: empower organizations to thrive by creating space for human potential through intelligent automation and creative solutions.
+                  From AI-powered applications that streamline operations to captivating multimedia content that tells your story, we build tools that work for real people solving real challenges. Our approach combines technical expertise with genuine curiosity about your goals, ensuring every solution we create truly serves your vision.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <div class="card-item">
+                    <h3>Intelligent Solutions</h3>
+                    <p>
+                        Custom AI applications, automated workflows, and smart systems that free your team to focus on what matters most - building relationships and driving innovation.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3>Creative Technology</h3>
+                    <p>
+                        Dynamic training videos, engaging social media content, and motion graphics that capture attention and convey your message with artistic vision and technical precision.
+                    </p>
+                </div>
+                <div class="card-item">
+                    <h3>Our Promise</h3>
+                    <p>
+                        Every project begins with listening. We believe in transparent communication, clear expectations, and delivering solutions that exceed them. Your success is our success.
+                    </p>
+                </div>
+            </div>
+
+            <p class="closing-statement">
+                Whether you're looking to automate, create, or build custom, Pythos brings the expertise and human understanding to make it happen. Let's create something extraordinary.
+            </p>
+        </div>
+    </section>
   
-  <section id="services" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Our Core Services</h2>
-        <p class="subtitle">Delivering cutting-edge solutions tailored to your unique business needs.</p>
-      </div>
-      <div class="services-grid"> <!-- Re-using services-grid for consistent card layout -->
-        <div class="service-card">
-          <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development Icon" class="service-icon" />
-          <h3>Full-Stack Development</h3>
-          <p>Custom web applications and robust software solutions using modern, scalable technologies from front-end to back-end.</p>
+    <section id="services" class="section light-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Core <span style="color:var(--pythos-teal);">Services</span></h2>
+                <p class="section-subtitle">Delivering cutting-edge solutions tailored to your unique business needs.</p>
+            </div>
+            <div class="content-grid">
+                <div class="card-item">
+                    <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development Icon" class="card-icon" />
+                    <h3>Full-Stack Development</h3>
+                    <p>Custom web applications and robust software solutions using modern, scalable technologies from front-end to back-end.</p>
+                </div>
+                <div class="card-item">
+                    <!-- Assuming service2.png is the multimedia icon -->
+                    <img src="assets/images/service2.png" alt="Multimedia Production Icon" class="card-icon" />
+                    <h3>Multimedia Production</h3>
+                    <p>Engaging video production, professional motion graphics, and creative design to bring your brand's story to life.</p>
+                </div>
+                <div class="card-item">
+                     <!-- Assuming service3.png is the AI solutions icon -->
+                    <img src="assets/images/service3.png" alt="AI Solutions Icon" class="card-icon" />
+                    <h3>AI-Integrated Solutions</h3>
+                    <p>Innovative AI-powered applications, intelligent automation, and data-driven insights to boost your business processes.</p>
+                </div>
+            </div>
         </div>
-        <div class="service-card">
-          <img src="assets/images/service2.png" alt="Multimedia Production Icon" class="service-icon" />
-          <h3>Multimedia Production</h3>
-          <p>Engaging video production, professional motion graphics, and creative design to bring your brand's story to life.</p>
-        </div>
-        <div class="service-card">
-          <img src="assets/images/service3.png" alt="AI Solutions Icon" class="service-icon" />
-          <h3>AI-Integrated Solutions</h3>
-          <p>Innovative AI-powered applications, intelligent automation, and data-driven insights to boost your business processes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Get in Touch</h2>
-        <p class="subtitle">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
-      </div>
-      <div class="contact-video-container">
-        <video class="contact-video" autoplay muted loop playsinline>
-          <source src="assets/videos/contact.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
-      <div class="contact-details">
-        <p>We'd love to hear from you!</p>
-        <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
-        <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
-      </div>
-    </div>
-  </section>
+    <section id="contact" class="section accent-bg"> <!-- Using accent-bg for dark contact section -->
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in <span style="color:var(--pythos-orange);">Touch</span></h2>
+                <p class="section-subtitle" style="color: var(--pythos-light-text);">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
+            </div>
+            <!-- Video removed from contact section for simplicity, can be added back -->
+            <div class="contact-details">
+                <p>We'd love to hear from you!</p>
+                <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
+                <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
+                <!-- Simple CTA button for contact -->
+                 <p style="margin-top: 30px;">
+                    <a href="mailto:fotiosmpouris@gmail.com?subject=Pythos Project Inquiry" class="cta-button" style="background-color: var(--pythos-orange);">Email Us Your Project Idea</a>
+                </p>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 Pythos. Digital Innovation. Human Connection. All rights reserved.</p>
-    </div>
-  </footer>
+    <footer>
+        <div class="container">
+            <p>© 2025 Pythos. Digital Innovation. Human Connection. All rights reserved.</p>
+        </div>
+    </footer>
 
   <script>
-    // Hero Text Animation
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        // Target the container to change its background and fade in
-        const heroTextContainer = document.getElementById('hero-text-box');
-        if (heroTextContainer) {
-            heroTextContainer.classList.add('loaded');
-        }
-        // Note: Text color changes for h1 and p are removed, rely on hero-content CSS
-      }, 1000); // Shortened delay for faster reveal
-    });
-
     // Smooth Scrolling for Navigation Links
     document.addEventListener("DOMContentLoaded", () => {
       const navLinks = document.querySelectorAll("header nav ul li a");
       navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const targetId = link.getAttribute("href").substring(1);
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            targetSection.scrollIntoView({ behavior: "smooth" });
+          const targetId = link.getAttribute("href");
+          if (targetId && targetId.startsWith("#")) {
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              // Calculate offset for fixed header
+              const headerOffset = document.querySelector('header').offsetHeight || 70; // Get header height or default
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+              });
+            }
           }
         });
       });
 
-      // Basic Mobile Nav Toggle (Optional - can be expanded)
+      // Optional: Add a class to header on scroll for styling
+      // const header = document.querySelector('header');
+      // window.onscroll = function() {
+      //   if (window.pageYOffset > 50) {
+      //     header.classList.add('scrolled');
+      //   } else {
+      //     header.classList.remove('scrolled');
+      //   }
+      // };
+
+      // Basic Mobile Nav Toggle (Placeholder - uncomment and expand for functionality)
       // const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
       // const nav = document.querySelector('header nav ul');
       // if (mobileNavToggle && nav) {
       //   mobileNavToggle.addEventListener('click', () => {
       //     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'; 
-      //     // This is a very basic toggle. A class-based toggle is better.
       //   });
       // }
     });
   </script>
 </body>
 </html>
-
