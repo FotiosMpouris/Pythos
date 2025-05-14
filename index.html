@@ -11,8 +11,8 @@
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.7;
-            color: #4A5568; /* Dark Gray for body text */
-            background-color: #F7FAFC; /* Very Light Gray Background */
+            color: #4A5568; 
+            background-color: #F7FAFC; 
             scroll-behavior: smooth;
         }
 
@@ -23,110 +23,106 @@
             padding: 0 20px; 
         }
 
-        /* --- PYTHOS COLOR PALETTE --- */
+        /* PYTHOS COLOR PALETTE (retained) */
         :root {
-            --pythos-teal: #1D7874; /* Primary Accent - Dark Teal */
-            --pythos-orange: #F39C12; /* Secondary Accent - Rich Gold/Orange */
-            --pythos-dark-charcoal: #2c3e50; /* Dark Base for sections/text */
-            --pythos-darker-charcoal: #1A202C; /* Slightly darker for headings */
-            --pythos-light-gray-bg: #e9f0ee; /* Light accent background */
+            --pythos-teal: #1D7874; 
+            --pythos-orange: #F39C12; 
+            --pythos-dark-charcoal: #2c3e50; 
+            --pythos-darker-charcoal: #1A202C; 
+            --pythos-light-gray-bg: #e9f0ee; 
             --pythos-white: #ffffff;
-            --pythos-light-text: #bdc3c7; /* For text on dark backgrounds */
-            --pythos-dark-text: #4A5568; /* Main body text */
+            --pythos-light-text: #bdc3c7; 
+            --pythos-dark-text: #4A5568; 
         }
 
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background-color: rgba(26, 32, 44, 0.95); /* Dark, slightly transparent - from your original */
-            position: fixed; /* Fixed navigation */
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            padding: 10px 0; /* Reduced padding slightly */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: background-color 0.3s ease;
+        /* --- NEW HEADER & LOGO CUT-OUT EFFECT (Adapted from Hard-E) --- */
+        header { /* This header is now minimal, just for the logo cutout effect */
+            background-color: var(--pythos-white); 
+            text-align: center; 
+            position: relative; 
+            z-index: 10; 
+             /* border-bottom: 1px solid #e0e0e0; /* Optional: keep if you like the line under the cutout */
         }
-        /* Optional: Scrolled state for header */
-        /* header.scrolled { background-color: rgba(26, 32, 44, 1); } */
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
+        .logo-area { 
+            display: inline-block;
+            position: relative; 
+            margin-top: 30px; /* Space from top of viewport */
+            margin-bottom: -85px; /* Pulls hero up. Fine-tune! Approx half of .logo-white-cutout height */
+        }
+
+        .logo-white-cutout { 
+            width: 230px;  /* Slightly larger for Pythos logo */
+            height: 230px; 
+            background-color: var(--pythos-white); 
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1; 
+            box-shadow: none; 
+        }
+
+        header .logo-container { /* The container for the actual Pythos logo image */
+            display: flex; /* Use flex to center image if it's smaller than container */
+            justify-content: center;
             align-items: center;
+            width: 150px; /* Adjust size of the Pythos logo's immediate container */
+            height: 150px;
+            padding: 10px; /* Optional padding inside */
+            /* background-color: #1e2b37; /* Optional: if logo needs a dark backing inside white */
+            border-radius: 50%;
+            box-shadow: 0px 3px 8px rgba(0,0,0,0.15); /* Subtle shadow on logo itself */
+            position: relative; 
+            z-index: 2;
         }
 
-        header .logo img {
-            max-height: 45px; /* As per your original Pythos logo size */
+        header .logo-container img { /* The Pythos logo image */
+            max-height: 100px; /* Control actual image size */
+            max-width: 100%;
             display: block;
         }
+        /* --- END NEW HEADER --- */
         
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 28px; /* Increased gap slightly */
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #E2E8F0; /* Light Gray for nav links */
-            font-weight: 500;
-            font-size: 0.95em;
-            transition: color 0.3s ease;
-            padding-bottom: 5px; /* Space for potential border */
-            border-bottom: 2px solid transparent; /* Transparent border for hover effect */
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active { 
-            color: var(--pythos-orange); /* Orange accent on hover/active */
-            border-bottom-color: var(--pythos-orange);
-        }
-        
-        .mobile-nav-toggle {
-            display: none; 
-            color: var(--pythos-white);
-            font-size: 1.8em;
-            cursor: pointer;
-        }
-        /* --- END HEADER --- */
-        
-        /* --- HERO SECTION (NO VIDEO BACKGROUND) --- */
+        /* --- HERO SECTION (Adapted for Cutout) --- */
         .hero {
-            background-color: var(--pythos-dark-charcoal); /* Solid dark background */
+            background-color: var(--pythos-dark-charcoal); 
             color: var(--pythos-white);
-            padding: 180px 20px 120px 20px; /* Adjusted padding, more top for fixed header */
+            padding: 140px 20px 100px 20px; /* Increased top padding for cutout */
             text-align: center;
-            min-height: 70vh; /* Can be adjusted */
+            min-height: 60vh; /* Adjusted */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative; 
+            z-index: 1; 
         }
 
         .hero h1 {
-            font-size: 3em; /* From your original Pythos */
+            font-size: 3em; 
             margin-bottom: 0.5em;
             color: var(--pythos-white);
             font-weight: 700;
             letter-spacing: 1px;
+            margin-top: 25px; /* Space due to cutout */
         }
-        .hero h1 .accent-text { /* For Pythos name or key phrases */
-            color: var(--pythos-orange); /* Orange accent in headline */
+        .hero h1 .accent-text { 
+            color: var(--pythos-orange); 
         }
 
-        .hero .tagline { /* Replaces .pitch from Hard-E for Pythos style */
-            font-size: 1.4em; /* Slightly larger */
+        .hero .tagline { 
+            font-size: 1.4em; 
             margin-bottom: 35px;
             color: var(--pythos-light-text);
             font-weight: 300;
             max-width: 700px;
         }
         
-        .hero .cta-button { /* General CTA button style we can reuse */
+        .hero .cta-button { 
             display: inline-block;
-            background-color: var(--pythos-teal); /* Pythos Teal */
+            background-color: var(--pythos-teal); 
             color: var(--pythos-white) !important; 
             padding: 15px 35px; 
             text-decoration: none;
@@ -137,32 +133,28 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .hero .cta-button:hover {
-            background-color: #16605d; /* Darker Teal */
+            background-color: #16605d; 
             transform: translateY(-2px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.15);
         }
         /* --- END HERO --- */
 
-
         /* --- GENERAL SECTION STYLING --- */
         .section {
-            padding: 80px 0px; /* Consistent padding from your original */
+            padding: 70px 0px; 
             text-align: center;
+            border-bottom: 1px solid #dee2e6; /* Subtle line separator between all sections */
         }
-        /* Alternating backgrounds */
-        .section.light-bg { background-color: var(--pythos-white); }
-        .section.lighter-gray-bg { background-color: #F7FAFC; } /* Your original very light gray */
-        .section.accent-bg { /* For sections needing more pop */
-            background-color: var(--pythos-teal); 
-            color: var(--pythos-white);
+        .section:last-of-type { /* No border on the last section */
+            border-bottom: none;
         }
-        .section.accent-bg .section-title,
-        .section.accent-bg .section-subtitle,
-        .section.accent-bg h3,
-        .section.accent-bg p {
-            color: var(--pythos-white);
-        }
-         .section.accent-bg .section-subtitle { color: var(--pythos-light-text); }
+
+        /* Distinct alternating backgrounds */
+        #about { background-color: var(--pythos-light-gray-bg); } /* Pythos original color */
+        #services { background-color: var(--pythos-white); }
+        /* #innovation or a new section could use var(--pythos-light-gray-bg) again */
+        #contact { background-color: var(--pythos-darker-charcoal); /* Darker for contact */
+                   color: var(--pythos-light-text); }
 
 
         .section-title {
@@ -170,19 +162,22 @@
             margin-bottom: 15px;
             color: var(--pythos-darker-charcoal); 
         }
+        #contact .section-title { color: var(--pythos-white); } /* White title for dark contact section */
+
         .section-subtitle {
-            font-size: 1.15em; /* Slightly larger */
-            color: #718096; /* Medium Gray from your original */
+            font-size: 1.15em; 
+            color: #718096; 
             margin-bottom: 50px;
-            max-width: 750px; /* Wider subtitle */
+            max-width: 750px; 
             margin-left: auto;
             margin-right: auto;
             padding: 0 15px;
         }
+        #contact .section-subtitle { color: var(--pythos-light-text); }
         /* --- END GENERAL SECTION --- */
 
         /* --- CARD/GRID STYLING (FOR ABOUT & SERVICES) --- */
-        .content-grid { /* Renamed from features-grid */
+        .content-grid { 
             display: flex;
             flex-wrap: wrap;
             justify-content: center; 
@@ -190,23 +185,23 @@
             padding: 0 10px; 
         }
 
-        .card-item { /* Renamed from feature-item */
+        .card-item { 
             background-color: var(--pythos-white); 
             padding: 30px; 
-            border-radius: 10px; /* Your original radius */
-            box-shadow: 0 5px 20px rgba(0,0,0,0.07); /* Your original shadow */
-            text-align: center; /* Center content in cards */
+            border-radius: 10px; 
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07); 
+            text-align: center; 
             flex-basis: calc(33.333% - 30px); 
             min-width: 280px; 
-            max-width: 340px; /* Slightly wider max */
+            max-width: 340px; 
             display: flex;
             flex-direction: column;
             align-items: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card-item:hover {
-            transform: translateY(-8px); /* Your original hover transform */
-            box-shadow: 0 10px 30px rgba(29,120,116,0.15); /* Teal shadow on hover */
+            transform: translateY(-8px); 
+            box-shadow: 0 10px 30px rgba(29,120,116,0.15); 
         }
         .card-item img.card-icon { 
             width: 60px; 
@@ -215,7 +210,7 @@
             object-fit: contain; 
         }
         .card-item h3 {
-            font-size: 1.4em; /* Slightly larger */
+            font-size: 1.4em; 
             color: var(--pythos-darker-charcoal);
             margin-bottom: 0.8em;
         }
@@ -237,8 +232,8 @@
             color: #2D3748; 
         }
         #about .closing-statement {
-            margin-top: 50px; /* More space */
-            font-size: 1.15em; /* Slightly larger */
+            margin-top: 50px; 
+            font-size: 1.15em; 
             font-style: italic;
             max-width: 750px;
             margin-left: auto;
@@ -248,20 +243,19 @@
         /* --- END ABOUT --- */
         
         /* --- CONTACT SECTION --- */
-        #contact { /* Re-using .accent-bg for dark background */
-            padding-bottom: 40px; /* Less bottom padding if footer follows */
-        }
          #contact .contact-details {
-            margin-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 40px;
+            margin-top: 30px; /* Reduced margin as header is already there */
+            /* border-top: 1px solid rgba(255,255,255,0.1); */ /* Optional top border */
+            /* padding-top: 40px; */
+            text-align: center; /* Center the contact details text */
         }
         #contact .contact-details p {
             font-size: 1.15em;
             margin-bottom: 1em;
+            color: var(--pythos-light-text); /* Ensure p text is light */
         }
         #contact .contact-details a {
-            color: var(--pythos-orange); /* Orange links on dark background */
+            color: var(--pythos-orange); 
             font-weight: 500;
             border-bottom: 1px dotted var(--pythos-orange);
             transition: color 0.3s, border-bottom-color 0.3s;
@@ -271,6 +265,13 @@
             border-bottom-color: var(--pythos-white);
             text-decoration: none;
         }
+        #contact .cta-button { /* Style for the button in contact section */
+            background-color: var(--pythos-orange);
+            margin-top: 20px;
+        }
+        #contact .cta-button:hover {
+            background-color: #d0820e; /* Darker orange */
+        }
         /* --- END CONTACT --- */
 
         /* --- FOOTER --- */
@@ -278,7 +279,7 @@
             background-color: #0A121E; 
             color: #A0AEC0; 
             text-align: center;
-            padding: 40px 20px; /* More padding */
+            padding: 40px 20px; 
             font-size: 0.9em;
         }
         footer p { margin: 0; }
@@ -287,21 +288,33 @@
 
         /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 768px) {
-            .hero { padding: 120px 20px 80px 20px; min-height: 60vh; }
-            .hero h1 { font-size: 2.2em; }
-            .hero .tagline { font-size: 1.2em; }
+            .hero { padding: 120px 20px 80px 20px; min-height: 50vh; }
+            .hero h1 { font-size: 2.1em; margin-top: 10px; }
+            .hero .tagline { font-size: 1.15em; }
+
+            .logo-area {
+                margin-bottom: -70px; 
+                 margin-top: 20px;
+            }
+            .logo-white-cutout {
+                width: 180px; height: 180px;
+            }
+            header .logo-container {
+                 width: 120px; height: 120px;
+            }
+            header .logo-container img {
+                 max-height: 70px;
+            }
 
             .section-title { font-size: 1.9em; }
             .section-subtitle { font-size: 1.05em; margin-bottom: 40px; }
             
-            .header-container { padding: 0 20px; }
-            nav ul { display: none; } /* Simplest mobile: hide nav. Full toggle needs JS */
-            .mobile-nav-toggle { display: block; }
-
-            .content-grid { grid-template-columns: 1fr; } /* Stack cards */
+            .content-grid { /* Stack cards on mobile */
+                 gap: 20px;
+            }
             .card-item { 
                 flex-basis: calc(100% - 20px);
-                max-width: 400px; /* Max width for single column cards */
+                max-width: 350px; /* Consistent max width for single column cards */
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -310,20 +323,12 @@
 </head>
 <body>
 
-    <header>
-        <div class="container header-container">
-          <div class="logo">
-            <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
-          </div>
-          <nav>
-            <ul>
-              <li><a href="#hero" class="active">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#services">Services</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <div class="mobile-nav-toggle">☰</div> 
+    <header> <!-- Header for the logo cutout effect -->
+        <div class="logo-area">
+            <div class="logo-white-cutout"></div>
+            <div class="logo-container">
+                <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
+            </div>
         </div>
     </header>
 
@@ -331,11 +336,12 @@
         <div class="container">
             <h1>Welcome to <span class="accent-text">Pythos</span></h1>
             <p class="tagline">Digital Innovation | Human Connection</p>
+            <!-- This button will scroll to the contact section -->
             <a href="#contact" class="cta-button">Let's Build Together</a>
         </div>
     </section>
 
-    <section id="about" class="section lighter-gray-bg">
+    <section id="about" class="section light-bg"> <!-- Changed to light-bg for more contrast -->
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">About <span style="color:var(--pythos-teal);">Pythos</span></h2>
@@ -376,7 +382,7 @@
         </div>
     </section>
   
-    <section id="services" class="section light-bg">
+    <section id="services" class="section lighter-gray-bg"> <!-- Changed to lighter-gray for alternation -->
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Our Core <span style="color:var(--pythos-teal);">Services</span></h2>
@@ -389,13 +395,11 @@
                     <p>Custom web applications and robust software solutions using modern, scalable technologies from front-end to back-end.</p>
                 </div>
                 <div class="card-item">
-                    <!-- Assuming service2.png is the multimedia icon -->
                     <img src="assets/images/service2.png" alt="Multimedia Production Icon" class="card-icon" />
                     <h3>Multimedia Production</h3>
                     <p>Engaging video production, professional motion graphics, and creative design to bring your brand's story to life.</p>
                 </div>
                 <div class="card-item">
-                     <!-- Assuming service3.png is the AI solutions icon -->
                     <img src="assets/images/service3.png" alt="AI Solutions Icon" class="card-icon" />
                     <h3>AI-Integrated Solutions</h3>
                     <p>Innovative AI-powered applications, intelligent automation, and data-driven insights to boost your business processes.</p>
@@ -404,20 +408,18 @@
         </div>
     </section>
 
-    <section id="contact" class="section accent-bg"> <!-- Using accent-bg for dark contact section -->
+    <section id="contact" class="section"> <!-- Background set by #contact CSS rule -->
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Get in <span style="color:var(--pythos-orange);">Touch</span></h2>
-                <p class="section-subtitle" style="color: var(--pythos-light-text);">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
+                <p class="section-subtitle">Ready to discuss your next project or learn more about how Pythos can help you innovate?</p>
             </div>
-            <!-- Video removed from contact section for simplicity, can be added back -->
             <div class="contact-details">
                 <p>We'd love to hear from you!</p>
                 <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
                 <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
-                <!-- Simple CTA button for contact -->
                  <p style="margin-top: 30px;">
-                    <a href="mailto:fotiosmpouris@gmail.com?subject=Pythos Project Inquiry" class="cta-button" style="background-color: var(--pythos-orange);">Email Us Your Project Idea</a>
+                    <a href="mailto:fotiosmpouris@gmail.com?subject=Pythos Project Inquiry from Website" class="cta-button">Email Us Your Project Idea</a>
                 </p>
             </div>
         </div>
@@ -430,9 +432,12 @@
     </footer>
 
   <script>
-    // Smooth Scrolling for Navigation Links
+    // Smooth Scrolling for Navigation Links (if we add nav back later)
+    // For now, the hero button links to #contact directly.
+    // If you add a full <nav> element again like the original Pythos, uncomment and adapt this.
+    /*
     document.addEventListener("DOMContentLoaded", () => {
-      const navLinks = document.querySelectorAll("header nav ul li a");
+      const navLinks = document.querySelectorAll("header nav ul li a"); // Assuming nav exists
       navLinks.forEach(link => {
         link.addEventListener("click", (e) => {
           const targetId = link.getAttribute("href");
@@ -440,8 +445,7 @@
             e.preventDefault();
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-              // Calculate offset for fixed header
-              const headerOffset = document.querySelector('header').offsetHeight || 70; // Get header height or default
+              const headerOffset = 0; // No fixed header for scrolling offset if using Hard-E style
               const elementPosition = targetElement.getBoundingClientRect().top;
               const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
@@ -453,26 +457,8 @@
           }
         });
       });
-
-      // Optional: Add a class to header on scroll for styling
-      // const header = document.querySelector('header');
-      // window.onscroll = function() {
-      //   if (window.pageYOffset > 50) {
-      //     header.classList.add('scrolled');
-      //   } else {
-      //     header.classList.remove('scrolled');
-      //   }
-      // };
-
-      // Basic Mobile Nav Toggle (Placeholder - uncomment and expand for functionality)
-      // const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      // const nav = document.querySelector('header nav ul');
-      // if (mobileNavToggle && nav) {
-      //   mobileNavToggle.addEventListener('click', () => {
-      //     nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex'; 
-      //   });
-      // }
     });
+    */
   </script>
 </body>
 </html>
