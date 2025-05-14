@@ -13,14 +13,14 @@
         }
 
         html {
-            scroll-behavior: smooth; /* For potential future anchor links */
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
             line-height: 1.7;
-            color: #333; /* Default text color */
-            background-color: #F7FAFC; /* Very light gray background */
+            color: #333; 
+            background-color: #F7FAFC; 
             font-size: 16px;
         }
 
@@ -33,10 +33,10 @@
             padding-right: 15px;
         }
 
-        /* Header */
+        /* --- UPDATED HEADER --- */
         header {
-            background-color: rgba(26, 32, 44, 0.9); /* Semi-transparent dark charcoal */
-            padding: 15px 0;
+            background-color: rgba(26, 32, 44, 0.95); /* Slightly more opaque */
+            padding: 10px 0; /* Reduced padding to make header slimmer */
             position: fixed;
             width: 100%;
             top: 0;
@@ -46,24 +46,40 @@
 
         .header-container {
             display: flex;
-            justify-content: space-between; /* Changed to space-between if nav added later */
+            /* justify-content: space-between; */ /* Will make logo left if tagline is beside it */
+            justify-content: center; /* Center the logo-and-tagline block */
             align-items: center;
+            flex-wrap: wrap; /* Allow tagline to wrap on small screens */
         }
         
-        header .logo img {
-            height: 55px; /* Adjusted size */
-            width: auto;
-            display: block; /* Removes extra space under image */
+        .logo-block { /* Wrapper for logo and its new tagline */
+            display: flex;
+            align-items: center;
+            /* flex-direction: column; /* Stack logo and tagline if desired */
+            /* text-align: center; */
         }
-        /* If you want logo centered when no nav:
-        .header-container { justify-content: center; }
-        */
+
+        header .logo img {
+            height: 50px; /* Slightly smaller logo for slimmer header */
+            width: auto;
+            display: block; 
+            margin-right: 15px; /* Space between logo and tagline */
+        }
+        
+        .header-tagline {
+            font-size: 0.9em;
+            color: #A0AEC0; /* Light gray for tagline */
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            /* margin-top: 5px; /* If logo is above tagline */
+        }
+        /* --- END HEADER UPDATES --- */
 
 
         /* Hero Section */
         #hero {
             position: relative;
-            height: 100vh; /* Full viewport height */
+            height: 100vh; 
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -81,23 +97,20 @@
             min-height: 100%;
             width: auto;
             height: auto;
-            z-index: -2; /* Behind overlay and content */
+            z-index: -2; 
             object-fit: cover;
         }
 
-        #hero::before { /* Dark overlay for better text readability */
+        #hero::before { 
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(10, 20, 30, 0.65); /* Darker overlay */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(10, 20, 30, 0.7); /* Slightly increased overlay opacity */
             z-index: -1;
         }
 
         .hero-content {
-            position: relative; /* To ensure it's above the ::before overlay */
+            position: relative; 
             z-index: 1;
             max-width: 800px;
         }
@@ -106,47 +119,48 @@
             display: inline-block;
             padding: 30px 40px;
             border-radius: 12px;
-            background-color: rgba(26, 32, 44, 0.6); /* Semi-transparent dark background for text */
-            opacity: 0; /* Initial state for JS animation */
-            transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s; /* Added transform */
-            transform: translateY(20px); /* Initial state for JS animation */
+            background-color: rgba(26, 32, 44, 0.65); /* Slightly more opaque text bg */
+            opacity: 0; 
+            transition: opacity 0.8s ease-out 0.5s, transform 0.8s ease-out 0.5s; 
+            transform: translateY(20px); 
         }
-        .hero-text-container.visible { /* Class added by JS */
+        .hero-text-container.visible { 
             opacity: 1;
             transform: translateY(0);
         }
 
 
         .hero-content h1 {
-            font-size: 3.2em; /* Larger main title */
+            font-size: 3.2em; 
             margin-bottom: 0.5em;
             font-weight: 700;
             letter-spacing: 1px;
-            color: #FFFFFF; /* Pure white for main title */
+            color: #FFFFFF; 
         }
 
         .hero-content p {
-            font-size: 1.4em; /* Larger subtext */
+            font-size: 1.4em; 
             font-weight: 300;
-            color: #E2E8F0; /* Light gray for subtext */
+            color: #E2E8F0; 
         }
 
         /* General Section Styling */
         .section {
-            padding: 80px 0; /* Increased padding */
+            padding: 80px 0; 
         }
-        .section:nth-child(even) { /* Alternating backgrounds */
-            background-color: #FFFFFF; /* White */
+        .section:nth-child(even) { 
+            background-color: #FFFFFF; 
         }
-        .section:nth-child(odd):not(#hero) { /* All odd sections except hero */
-            background-color: #EDF2F7; /* Very light blue/gray */
-        }
+        /* First section after hero will be 'about' which is odd */
+        #about.section { background-color: #EDF2F7; }
+        /* Services section is even, so it will be white */
+        /* Contact section (odd) has its own dark bg */
 
 
         .section-title {
             text-align: center;
             font-size: 2.5em;
-            color: #1A202C; /* Dark Charcoal for titles */
+            color: #1A202C; 
             margin-bottom: 20px;
             font-weight: 600;
         }
@@ -154,18 +168,17 @@
         .section-subtitle {
             text-align: center;
             font-size: 1.2em;
-            color: #4A5568; /* Medium Gray for subtitles */
+            color: #4A5568; 
             max-width: 700px;
-            margin: 0 auto 60px auto; /* Increased bottom margin */
+            margin: 0 auto 60px auto; 
         }
         
-        /* About Section - Specifics */
         #about .intro-text p, #about .closing-statement {
             font-size: 1.1em;
             color: #4A5568;
             max-width: 800px;
             margin: 0 auto 1.5em auto;
-            text-align: left; /* Better for paragraphs */
+            text-align: left; 
         }
         #about .intro-text p:last-child, #about .closing-statement {
             margin-bottom: 0;
@@ -176,13 +189,11 @@
             text-align: center;
         }
 
-
-        /* Services Grid (Used for About Sub-sections and Services) */
         .content-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
-            justify-content: center; /* Center items if row isn't full */
+            justify-content: center; 
             margin-top: 40px;
         }
 
@@ -192,9 +203,9 @@
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
             text-align: center;
-            flex: 1 1 calc(33.333% - 30px); /* 3 columns */
-            min-width: 280px; /* Min width before wrapping */
-            max-width: 350px; /* Max width of cards */
+            flex: 1 1 calc(33.333% - 30px); 
+            min-width: 280px; 
+            max-width: 350px; 
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .content-item:hover {
@@ -202,43 +213,43 @@
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .content-item img.service-icon { /* Specific for service icons */
-            width: 70px; /* Adjusted size */
+        .content-item img.service-icon { 
+            width: 70px; 
             height: 70px;
             margin-bottom: 20px;
-            object-fit: contain; /* Ensure icon isn't stretched */
+            object-fit: contain; 
         }
 
         .content-item h3 {
-            font-size: 1.6em; /* Larger headings for cards */
-            color: #3182CE; /* Techy Blue Accent for card titles */
+            font-size: 1.6em; 
+            color: #3182CE; 
             margin-bottom: 15px;
             font-weight: 600;
         }
 
         .content-item p {
-            color: #4A5568; /* Medium Gray for card text */
+            color: #4A5568; 
             font-size: 1em;
         }
 
-        /* Contact Section */
+        /* --- UPDATED CONTACT SECTION --- */
         #contact {
-            background-color: #1A202C; /* Dark Charcoal Background */
-            color: #E2E8F0; /* Light text for dark background */
+            background-color: #1A202C; 
+            color: #E2E8F0; 
         }
         #contact .section-title {
-            color: #FFFFFF; /* White title on dark background */
+            color: #FFFFFF; 
         }
         #contact .section-subtitle {
-            color: #A0AEC0; /* Lighter gray subtitle */
+            color: #A0AEC0; 
         }
 
         .contact-video-container {
             position: relative;
             width: 100%;
-            max-width: 700px; /* Slightly smaller max width */
+            max-width: 700px; 
             margin: 40px auto;
-            border-radius: 12px; /* More rounded */
+            border-radius: 12px; 
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
@@ -249,26 +260,34 @@
             display: block;
         }
 
+        #contact .contact-details { /* Wrapper for better control */
+            margin-top: 30px;
+        }
         #contact .contact-details p {
-            font-size: 1.15em;
-            margin-bottom: 10px;
+            font-size: 1.2em; /* Slightly larger */
+            margin-bottom: 12px;
+            color: #FFFFFF; /* Make prompt text white for better visibility */
+        }
+        #contact .contact-details .contact-method { /* Class for email/phone lines */
+             font-size: 1.15em;
+             color: #CBD5E0; /* Lighter than prompt, but visible */
         }
         #contact .contact-details a {
-            color: #63B3ED; /* Brighter blue for links on dark background */
+            color: #63B3ED; 
             text-decoration: none;
             font-weight: 500;
         }
         #contact .contact-details a:hover {
             text-decoration: underline;
-            color: #90CDF4; /* Lighter blue on hover */
+            color: #90CDF4; 
         }
+        /* --- END CONTACT SECTION UPDATES --- */
 
 
-        /* Footer */
         footer {
             padding: 30px 0;
-            background-color: #0A121F; /* Even darker for footer */
-            color: #A0AEC0; /* Light gray */
+            background-color: #0A121F; 
+            color: #A0AEC0; 
             text-align: center;
             font-size: 0.9em;
         }
@@ -278,7 +297,7 @@
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             .content-item {
-                flex-basis: calc(50% - 30px); /* 2 columns */
+                flex-basis: calc(50% - 30px); 
             }
         }
 
@@ -290,25 +309,37 @@
             .section-subtitle { font-size: 1.1em; }
             
             .header-container {
-                /* If logo needs to be centered on mobile when no nav: */
-                /* justify-content: center; */
+                 justify-content: center; /* Center logo block on mobile */
             }
+            .logo-block {
+                flex-direction: column; /* Stack logo and tagline */
+                align-items: center;
+            }
+            header .logo img {
+                margin-right: 0;
+                margin-bottom: 5px; /* Space between logo and tagline when stacked */
+            }
+
 
             .content-grid {
                 gap: 20px;
             }
             .content-item {
-                flex-basis: 100%; /* 1 column */
-                max-width: 450px; /* Max width for single column items */
+                flex-basis: 100%; 
+                max-width: 450px; 
                  margin-left: auto;
                  margin-right: auto;
             }
-            #about .intro-text p { text-align: justify; } /* Justify for better block text */
+            #about .intro-text p { text-align: justify; } 
+            #contact .contact-details p { font-size: 1.1em; } /* Adjust contact text for mobile */
+            #contact .contact-details .contact-method { font-size: 1.05em; }
         }
          @media (max-width: 480px) {
             .hero-content h1 { font-size: 2em; }
             .hero-content p { font-size: 1.1em; }
             .hero-text-container { padding: 20px; }
+            header .logo img { height: 45px; }
+            .header-tagline { font-size: 0.8em; }
         }
 
     </style>
@@ -316,20 +347,10 @@
 <body>
   <header>
     <div class="container header-container">
-      <div class="logo">
+      <div class="logo-block"> <!-- Changed to logo-block -->
         <img src="assets/images/pythos-logo.png" alt="Pythos Logo" />
+        <span class="header-tagline">Digital Innovation & Creative Solutions</span>
       </div>
-      <!-- Navigation removed as per request -->
-      <!-- 
-      <nav>
-        <ul>
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav> 
-      -->
     </div>
   </header>
 
@@ -339,9 +360,9 @@
       Your browser does not support the video tag.
     </video>
     <div class="hero-content">
-      <div class="hero-text-container" id="hero-text-anim-container"> <!-- Changed ID for clarity -->
-        <h1 id="hero-main-title">Welcome to Pythos</h1> <!-- Changed ID -->
-        <p id="hero-subtext">Digital Innovation | Human Connection</p> <!-- Changed ID -->
+      <div class="hero-text-container" id="hero-text-anim-container"> 
+        <h1 id="hero-main-title">Welcome to Pythos</h1> 
+        <p id="hero-subtext">Digital Innovation | Human Connection</p> 
       </div>
     </div>
   </section>
@@ -391,7 +412,7 @@
     <div class="container">
       <h2 class="section-title">Core Services</h2>
       <p class="section-subtitle">Expertise to Power Your Digital Transformation.</p>
-      <div class="content-grid"> <!-- Reusing content-grid for services -->
+      <div class="content-grid"> 
         <div class="content-item">
           <img src="assets/images/fullstack-icon.png" alt="Full-Stack Development" class="service-icon" />
           <h3>Full-Stack Development</h3>
@@ -417,16 +438,16 @@
       <p class="section-subtitle">Let's discuss how Pythos can help elevate your next project.</p>
       
       <div class="contact-video-container">
-        <video class="contact-video" autoplay muted loop playsinline poster="assets/images/contact-video-poster.jpg"> <!-- Added a poster attribute -->
+        <video class="contact-video" autoplay muted loop playsinline poster="assets/images/contact-video-poster.jpg"> 
           <source src="assets/videos/contact.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
       
       <div class="contact-details">
-        <p>Ready to start a conversation?</p>
-        <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
-        <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
+        <p>Ready to start a conversation?</p> <!-- This will be white now -->
+        <p class="contact-method">Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
+        <p class="contact-method">Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
       </div>
     </div>
   </section>
@@ -442,30 +463,27 @@
     window.addEventListener('load', function() {
       const heroTextContainer = document.getElementById('hero-text-anim-container');
       if (heroTextContainer) {
-        // Optional: Change text color after animation if desired
-        // const welcomeText = document.getElementById('hero-main-title');
-        // const subText = document.getElementById('hero-subtext');
-        
-        // Start animation after a short delay
         setTimeout(function() {
           heroTextContainer.classList.add('visible');
-          // if (welcomeText) welcomeText.style.color = '#FFD700'; // Example: Gold color
-          // if (subText) subText.style.color = '#FFD700'; // Example: Gold color
-        }, 500); // Short delay before animation starts
+        }, 500); 
       }
     });
 
-    // Smooth scroll for any future anchor links (if nav is added back or for footer links etc.)
-    // This script is generic for any link starting with #
+    // Smooth scroll (generic for any # links)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            // Only prevent default if it's a true internal anchor, not for mailto: or tel:
             if (this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    targetElement.scrollIntoView({
+                    // Calculate offset for fixed header
+                    const headerOffset = document.querySelector('header').offsetHeight || 70; // Fallback offset
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
