@@ -271,9 +271,19 @@
         #contact .cta-button { /* Style for the button in contact section */
             background-color: var(--pythos-orange);
             margin-top: 20px;
+            color: var(--pythos-white) !important; /* ADD OR ENSURE THIS IS PRESENT AND !IMPORTANT */
         }
         #contact .cta-button:hover {
             background-color: #d0820e; /* Darker orange */
+        }
+
+        .contact-section-button {
+            padding: 12px 28px; /* Slightly less padding to make it less wide */
+            font-size: 1.05em; /* Adjust font size if needed */
+            /* You could add other distinct styles here, like a border: */
+            /* border: 2px solid var(--pythos-white); */
+            /* background-color: transparent; */ /* Example for an outline button */
+            /* color: var(--pythos-orange) !important; */ /* If using transparent bg */
         }
         /* --- END CONTACT --- */
 
@@ -306,7 +316,7 @@
                  width: 120px; height: 120px;
             }
             header .logo-container img {
-                 max-height: 100px;
+                 max-height: 130px;
             }
 
             .section-title { font-size: 1.9em; }
@@ -421,9 +431,10 @@
                 <p>We'd love to hear from you!</p>
                 <p>Email: <a href="mailto:fotiosmpouris@gmail.com">fotiosmpouris@gmail.com</a></p>
                 <p>Phone: <a href="tel:+15082949979">(508) 294-9979</a></p>
-                 <p style="margin-top: 30px;">
-                    <a href="mailto:fotiosmpouris@gmail.com?subject=Pythos Project Inquiry from Website" class="cta-button">Email Us Your Project Idea</a>
-                </p>
+                 <div style="margin-top: 30px;"> {/* Changed <p> to <div> for better control if needed */}
+    <a href="mailto:fotiosmpouris@gmail.com?subject=Pythos Project Inquiry" class="cta-button contact-section-button">Ideas</a> {/* Added class "contact-section-button" */}
+    <p style="margin-top: 10px; font-size: 0.95em; color: var(--pythos-light-text);">Email Us Your Project Idea</p> {/* New paragraph for the text */}
+</div>
             </div>
         </div>
     </section>
